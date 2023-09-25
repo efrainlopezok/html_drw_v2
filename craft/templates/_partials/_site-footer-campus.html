@@ -1,0 +1,84 @@
+{% cache globally %}
+<footer class="l-site-footer l-site-footer--campus" role="contentinfo">
+  <div class="l-container">
+    <div class="l-site-footer__logo">
+      <a href="{{ siteUrl }}" target="_blank" rel="noopener noreferrer" class="site-logo site-logo--footer">
+        <svg class="site-logo__svg">
+          <use xlink:href="#svg--drw-logo" />
+        </svg>
+      </a>
+    </div>
+    <div class="l-site-footer__nav">
+      {% set locations = craft.entries.section('locations').order('locationAbbreviation') %}
+      {% if locations %}
+        <ul class="locations-list">
+          {% for location in locations %}
+            <li>{{ location.locationAbbreviation }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+      <div class="disclaimer">
+        ©{{ now.year }} DRW Holdings, LLC.  All Rights Reserved.
+      </div>
+      <div class="legal-nav">
+        {% for entry in navigation.legalNavigation %}
+          <a href="{{ entry.url }}">{{ entry.title }}</a>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="l-site-footer__social">
+      <ul class="social-icons">
+        {% if socialMedia.twitterUsername | length %}
+        <li>
+          <a href="https://twitter.com/{{ socialMedia.twitterUsername }}">
+            <svg class="icon icon--teal">
+              <use xlink:href="#svg--icon-twitter" />
+            </svg>
+          </a>
+        </li>
+        {% endif %}
+
+        {% if socialMedia.instagramUsername | length  %}
+        <li>
+          <a href="https://instagram.com/{{ socialMedia.instagramUsername }}">
+            <svg class="icon icon--teal">
+              <use xlink:href="#svg--icon-instagram" />
+            </svg>
+          </a>
+        </li>
+        {% endif %}
+
+        {% if socialMedia.facebookLink | length  %}
+        <li>
+          <a href="{{ socialMedia.facebookLink }}">
+            <svg class="icon icon--teal">
+              <use xlink:href="#svg--icon-facebook" />
+            </svg>
+          </a>
+        </li>
+        {% endif %}
+
+        {% if socialMedia.linkedinLink | length  %}
+        <li>
+          <a href="{{ socialMedia.linkedinLink }}">
+            <svg class="icon icon--teal">
+              <use xlink:href="#svg--icon-linkedin" />
+            </svg>
+          </a>
+        </li>
+        {% endif %}
+
+        {% if socialMedia.youtubeLink | length  %}
+        <li>
+          <a href="{{ socialMedia.youtubeLink }}">
+            <svg class="icon icon--teal icon--youtube">
+              <use xlink:href="#svg--icon-youtube" />
+            </svg>
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</footer>
+{% endcache %}

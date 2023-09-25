@@ -1,0 +1,36 @@
+{% set headerSize = {
+  mode: 'crop',
+  position: entry.cropAnchor | length ? entry.cropAnchor | kebab : 'top-left',
+  width: 1280,
+  height: 600
+} %}
+{% set backgroundImageSrc = entry.headerImage | length ? entry.headerImage.first.getUrl(headerSize) : false %}
+{% set title = entry.headerTitle | length ? entry.headerTitle : entry.title %}
+
+{% if backgroundImageSrc %}
+<div class="l-page-header u-bg u-bg--image u-overlay u-overlay--gradient" style="background-image: url({{ backgroundImageSrc }});">
+  <div class="l-page-header__inner">
+    <div class="l-container">
+      <div class="heading-group">
+        <h1 class="heading-group__title {% if entry.url == siteUrl %} js-fancy-heading {% endif %}">{{ title }}</h1>
+        {% if entry.headerSubtitle | length %}
+          <h2 class="heading-group__subtitle">{{ entry.headerSubtitle }}</h2>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+  <div class="l-page-header l-page-header--small">
+    <div class="l-page-header__inner">
+      <div class="l-container">
+        <div class="heading-group heading-group--feature">
+          <h1 class="heading-group__title">{{ title }}</h1>
+          {% if entry.headerSubtitle | length %}
+            <h2 class="heading-group__subtitle">{{ entry.headerSubtitle }}</h2>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}

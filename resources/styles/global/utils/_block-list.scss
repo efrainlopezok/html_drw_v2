@@ -1,0 +1,12 @@
+//---------------------------------------------------------------
+//
+// Block list mixin
+// Sets a list to have no margin, padding or bullets
+//
+//---------------------------------------------------------------
+
+@mixin block-list() {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

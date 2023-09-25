@@ -1,0 +1,22 @@
+//---------------------------------------------------------------
+//
+// Legal Nav
+// For pages like Privacy Policy & Terms of Use
+//
+//---------------------------------------------------------------
+
+.legal-nav {
+  font-size: rem(13px);
+  margin-top: rem(20px);
+  
+  @include breakpoint( bp(medium) ) {
+    margin-top: 0;
+    display: inline-block;
+    vertical-align: baseline;
+  }
+
+  a {
+    color: rgba(255, 255, 255, 0.2);
+    margin-right: .5em;
+  }
+}

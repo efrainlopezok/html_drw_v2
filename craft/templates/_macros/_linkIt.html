@@ -1,0 +1,16 @@
+{% macro link(linkItField, classes) %}
+  {% spaceless %}
+  {% if classes is iterable %}
+    {% set classes = classes | join(' ') %}
+  {% else %}
+    {% set classes = classes %}
+  {% endif %}
+  {% endspaceless %}
+
+  <a href="{{ linkItField.url }}"
+     {% if linkItField['target'] is defined and linkItField.target | length %}target="{{ linkItField.target }}"{% endif %}
+     class="{{ classes }}"
+  >
+    {{ linkItField.text }}
+  </a>
+{% endmacro %}

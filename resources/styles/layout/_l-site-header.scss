@@ -1,0 +1,118 @@
+//---------------------------------------------------------------
+//
+// Layout: Site Header
+// Controls positioning of site header elements
+//
+//---------------------------------------------------------------
+
+.l-site-header {
+  padding: rem(20px 0);
+  position: relative;
+
+  @include breakpoint(800px) {
+    @include content-container;
+    padding-top: rem(30px);
+    padding-bottom: rem(20px);
+  }
+
+  @include breakpoint(bp(large)) {
+    padding-top: rem(60px);
+    padding-bottom: rem(60px);
+  }
+}
+
+.l-site-header__logo {
+  width: 20%;
+  max-width: 80px;
+
+  @include breakpoint(800px) {
+    margin-left: 0;
+  }
+
+  @include breakpoint(bp(large)) {
+    @include span(1 of 12 at 1);
+  }
+}
+
+.l-site-header__nav-toggle {
+  position: absolute;
+  right: span(1 of 16);
+  top: 50%;
+  transform: translateY(-50%);
+
+  @include breakpoint(800px) {
+    display: none;
+  }
+}
+
+.l-site-header__nav {
+  display: none;
+  background-color: mix(#fff, color(dark-blue), 20);
+  box-shadow: 0 4px 10px rgba(#000, 0.4);
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 99;
+
+  &:after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: rem(8px);
+    top: 0;
+    transform: rotate(45deg) translateX(-50%);
+    transform-origin: 50% 50%;
+    background-color: inherit;
+  }
+
+  &.is-active,
+  .no-js & {
+    display: block;
+  }
+
+  .no-js & {
+    top: 0;
+    position: relative;
+  }
+
+  @include breakpoint(800px) {
+    @include span(12 of 12 at 1);
+    clear: both;
+    box-shadow: none;
+    padding-top: rem(25px);
+    display: block;
+    position: static;
+    background-color: transparent;
+  }
+
+  @include breakpoint(bp(large)) {
+    @include span(10 of 12 at 3);
+    position: relative;
+    top: rem(16px);
+    padding-top: 0;
+    clear: none;
+  }
+}
+
+//---------------------------------------------------------------
+// On Campus pages
+//---------------------------------------------------------------
+
+.l-site-header--campus {
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  left: 0;
+  right: 0;
+  padding: 20px 0;
+  z-index: 100;
+
+  .l-site-header__nav {
+    top: auto;
+    bottom: -0.4em;
+  }
+}

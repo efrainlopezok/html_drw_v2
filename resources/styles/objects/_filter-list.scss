@@ -1,0 +1,54 @@
+//---------------------------------------------------------------
+//
+// Special styles for the filter lists
+//
+//---------------------------------------------------------------
+
+.filter-list {
+  @include block-list;
+  @include type-caption;
+  color: color(manatee);
+}
+
+.filter-list > li {
+  color: color(manatee);
+  padding: .25em 0 .25em 1.25em;
+  padding-left: 0;
+  position: relative;
+
+  a {
+    color: color(manatee);
+
+  }
+
+  // &:before {
+  //   content: '';
+  //   width: 8px;
+  //   height: 8px;
+  //   border: 1px solid currentColor;
+  //   position: absolute;
+  //   left: 0;
+  //   top: 1em;
+  //   transform: translateY(-50%);
+  // }
+
+  &:hover {
+    color: color(dark-blue);
+    cursor: pointer;
+  }
+  
+  &.is-active {
+    color: color(dark-blue);
+
+    // &:before {
+    //   background-color: color(dark-blue);
+    // }
+    a {
+      @include underline-active;
+      color: color(dark-blue);
+      text-decoration: none;
+      cursor: default;
+      position: relative;
+    }
+  }
+}

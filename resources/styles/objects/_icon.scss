@@ -1,0 +1,75 @@
+//---------------------------------------------------------------
+//
+// Icon
+// SVG Icon styles
+//
+//---------------------------------------------------------------
+
+
+.icon {
+  display: block;
+  fill: currentColor;
+  width: 12px;
+  height: 12px;
+}
+
+
+//---------------------------------------------------------------
+// Modifiers
+//---------------------------------------------------------------
+
+.icon--teal {
+  fill: color(bright-teal);
+}
+
+.icon--manatee {
+  fill: color(manatee);
+}
+
+.icon--med {
+  width: 18px;
+  height: 18px;
+}
+
+.icon--illustration {
+  width: 60px;
+  height: 60px;
+}
+
+.icon--quotes {
+  width: 21px;
+  height: 16px;
+}
+
+.icon--clock {
+  width: 50px;
+  height: 50px;
+}
+
+.icon--youtube {
+  width: 16px;
+}
+
+.icon--play {
+  width: 30px;
+  height: 30px;
+}
+
+.icon--inline {
+  display: inline-block;
+  margin-right: 0.25em;
+  vertical-align: middle;
+  position: relative;
+  top: -0.125em;
+}
+
+.icon--download {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+}
+
+.icon--warning {
+  width: 35px;
+  height: 35px;
+}

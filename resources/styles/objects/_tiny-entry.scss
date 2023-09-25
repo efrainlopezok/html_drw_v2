@@ -1,0 +1,28 @@
+//---------------------------------------------------------------
+
+//
+// Tiny little entries
+// Typically in an entry pagination
+//
+//---------------------------------------------------------------
+
+.tiny-entry__eyebrow {
+  @include type-caption;
+  color: color(manatee);
+}
+
+.tiny-entry__title {
+  @include typesize-h6;
+  margin-bottom: rem(15px);
+  font-family: $secondary-font;
+  line-height: 1.6;
+
+  a {
+    @include no-underline;
+    color: color(dark-blue);
+
+    &:hover {
+      @include nice-underline;
+    }
+  }
+}

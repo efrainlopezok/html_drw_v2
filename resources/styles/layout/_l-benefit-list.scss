@@ -1,0 +1,65 @@
+//==============================================================================
+// Benefit List
+// Special block list for benefits on the campus pages
+//==============================================================================
+
+// -----------------------------------------------------------------------------
+// Base
+// -----------------------------------------------------------------------------
+
+.l-benefit-list {
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include breakpoint(bp(medium)) {
+    flex-flow: row wrap;
+    margin-left: rem(-30);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Elements
+// -----------------------------------------------------------------------------
+
+.l-benefit-list__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: rem(30);
+  background-color: color(reverse);
+  text-align: center;
+  line-height: 1.6;
+  outline: 1px solid color(mercury);
+  border-radius: 3px;
+  width: 100%;
+  margin-top: rem(30);
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  @include breakpoint(bp(medium)) {
+    width: span(5.5 of 12 0.75);
+    margin-left: rem(30);
+    margin-top: 0;
+
+    &:nth-child(n + 3) {
+      margin-top: rem(30);
+    }
+  }
+
+  @include breakpoint(bp(large)) {
+    width: span(3.8 of 12 0.75);
+
+    &:nth-child(n + 3) {
+      margin-top: 0;
+    }
+
+    &:nth-child(n + 4) {
+      margin-top: rem(30);
+    }
+  }
+}

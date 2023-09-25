@@ -1,0 +1,38 @@
+//---------------------------------------------------------------
+//
+// Overlay
+// Adds an overlay to an element
+//
+//---------------------------------------------------------------
+
+.u-overlay {
+  position: relative;
+  background-color: currentColor;
+
+  &:before {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: .6;
+    z-index: 1;
+  }
+}
+
+.u-overlay--inherit:before {
+  background-color: inherit;
+}
+
+.u-overlay--gradient:before {
+  background-color: transparent;
+  background-image: linear-gradient(to bottom right, color(dark-blue), color(bright-teal));
+}
+
+@each $color, $value in $colors {
+  .u-overlay--#{$color}:before {
+    background-color: $value;
+  }
+}

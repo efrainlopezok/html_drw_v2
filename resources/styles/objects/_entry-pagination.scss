@@ -1,0 +1,41 @@
+//---------------------------------------------------------------
+//
+// Entry Pagination
+// Pagination between entries on single page
+//
+//---------------------------------------------------------------
+
+.entry-pagination {
+  @include container;
+  border-top: 1px solid color(light-gray);
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background-color: color(light-gray);
+  }
+}
+
+.entry-pagination__entry {
+  padding: rem(60px 0);
+
+  &:hover {
+    cursor: pointer;
+
+  }
+}
+
+.entry-pagination__entry--previous {
+  @include span(6 of 12 at 1);
+  padding-right: rem(80px);
+}
+
+.entry-pagination__entry--next {
+  @include span(6 of 12 at 7);
+  padding-left: rem(80px);
+}

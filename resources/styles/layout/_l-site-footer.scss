@@ -1,0 +1,78 @@
+//---------------------------------------------------------------
+//
+// Layout: Site Footer
+// Controls positioning of site footer items
+//
+//---------------------------------------------------------------
+
+.l-site-footer {
+  @include container;
+  padding: 10% 0;
+  background-color: color(dark-blue);
+
+  @include breakpoint(bp(large)) {
+    padding: rem(80px) 0;
+  }
+}
+
+.l-site-footer__logo {
+  width: 20%;
+
+  @include breakpoint(bp(medium)) {
+    @include span(2 of 12 at 1);
+    max-width: 90px;
+  }
+
+  @include breakpoint(bp(large)) {
+    position: relative;
+    top: -1rem;
+  }
+}
+
+.l-site-footer__nav {
+  margin-top: rem(25);
+
+  @include breakpoint(bp(medium)) {
+    @include span(6 of 12 at 4);
+    margin-top: 0;
+  }
+
+  @include breakpoint(bp(large)) {
+    @include span(9 of 12 at 3);
+  }
+}
+
+.l-site-footer__legal {
+  padding-top: rem(40px);
+
+  @include breakpoint(bp(medium)) {
+    clear: both;
+  }
+
+  @include breakpoint(bp(large)) {
+    @include push(2);
+    padding-top: rem(10px);
+  }
+}
+
+.l-site-footer__social {
+  @include breakpoint(bp(large)) {
+    min-width: 200px;
+    @include span(2 of 12 at 11);
+  }
+}
+
+//---------------------------------------------------------------
+// On Campus pages
+//---------------------------------------------------------------
+
+.l-site-footer--campus {
+  .l-site-footer__logo {
+    top: -6px;
+  }
+
+  .l-site-footer__social {
+    position: relative;
+    top: 10px;
+  }
+}

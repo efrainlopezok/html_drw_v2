@@ -1,0 +1,36 @@
+{% set title = block.bulletCtaLink ? '<a href="' ~ block.bulletCtaLink ~ '">' ~ block.bulletTitle ~ '</a>' : block.bulletTitle %}
+{% set illustrationSlug = block.illustration | length ? block.illustration | kebab : '' %}
+{% set modifier =  layout is defined ? 'excerpt--' ~ layout : '' %}
+
+<article class="excerpt {{ modifier }}" id="illo-{{ illustrationSlug }}">
+  {% if block.illustration | length %}
+    <figure class="excerpt__thumbnail">
+      {% if craft.request.path | length %}
+        <svg class="icon icon--illustration" >
+          <use xlink:href="#svg--illustration-{{ illustrationSlug }}" />
+        </svg>  
+      {% else %}
+        {% include '_partials/illustrations/_' ~ illustrationSlug %}
+      {% endif %}
+    </figure>
+  {% endif %}
+
+  <h3 class="excerpt__title">{{ title | raw }}</h3>
+  
+  <div class="excerpt__body">
+    {{ block.bulletBody }}
+  </div>
+  
+  {% if block.careerCategory != 'Default' and craft.drw.getJobCountByCategory(block.careerCategory) > 0 %}
+    {% set cat = block.careerCategory %}
+    {% set jobCount = craft.drw.getJobCountByCategory(cat) %}
+    <div class="excerpt__cta">
+      <a href="{{ url('careers/listings', {categories: cat }) }}" class="text-btn">{{ block.bulletCtaLinkText }} — <span>{{ jobCount }}</span></a>
+    </div>
+  {% elseif block.bulletCtaLink | length %}
+    <div class="excerpt__cta">
+      <a href="{{ block.bulletCtaLink }}" class="text-btn">{{ block.bulletCtaLinkText }}</a>
+    </div>
+  {% endif %}
+
+</article>

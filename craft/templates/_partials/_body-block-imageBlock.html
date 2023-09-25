@@ -1,0 +1,14 @@
+{% if block.image.first | length %}
+  {% set ratio = (block.image.first.height / block.image.first.width) %}
+  {% set classes = block.fullWidth ? 'figure--full-width' : '' %}
+
+  <figure class="figure {{ classes | join(' ') }}">
+    <img src="{{ block.image.first().url }}" alt="Something" {% if block.fullWidth %} class="js-full-width" {% endif %}>
+
+    {% if block.caption | length %}
+    <figcaption class="figure__caption">
+      {{ block.caption }}
+    </figcaption>
+    {% endif %}
+  </figure>
+{% endif %}

@@ -1,0 +1,11 @@
+<section class="l-section l-section--small u-bg--light-gray">
+  <div class="l-container">
+      {% if entry.slug != 'blog' %}
+          {% include '_partials/_updates-filter' %}
+      {% endif %}
+    {% include '_partials/_grid-cards' %}
+    <div class="l-section__cta">
+      <a href="#" class="btn btn--large" id="load-more">Load More</a>
+    </div>
+  </div>
+</section>

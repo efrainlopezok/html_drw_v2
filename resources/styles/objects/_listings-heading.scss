@@ -1,0 +1,9 @@
+.listings-heading {
+  padding: rem(30px 0);
+  background-color: color(reverse);
+}
+
+.listings-heading__title {
+  @include typesize-h4;
+  font-family: $secondary-font;
+}

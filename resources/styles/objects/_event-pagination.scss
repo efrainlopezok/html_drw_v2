@@ -1,0 +1,48 @@
+//==============================================================================
+// Event Pagination
+// Pagination for On Campus events
+//==============================================================================
+
+// -----------------------------------------------------------------------------
+// Base
+// -----------------------------------------------------------------------------
+
+.event-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// -----------------------------------------------------------------------------
+// Elements
+// -----------------------------------------------------------------------------
+
+.event-pagination__prev,
+.event-pagination__next {
+  display: none;
+  @include type-cap-heading;
+  color: rgba(color(blue-gray), 0.7);
+  line-height: 1;
+  position: relative;
+  top: 1px;
+
+  @include breakpoint(bp(medium)) {
+    display: block;
+  }
+}
+
+.event-pagination__prev {
+  margin-right: 1.5em;
+}
+
+.event-pagination__next {
+  margin-left: 1.5em;
+}
+
+// -----------------------------------------------------------------------------
+// Modifiers
+// -----------------------------------------------------------------------------
+
+.event-pagination--modifier {
+
+}

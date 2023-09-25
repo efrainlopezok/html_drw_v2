@@ -1,0 +1,90 @@
+
+<!-- generic message if no event scheduled -->
+    <div class=" campus-map__dialog l-campus-events campus-map--no-event">
+        <div class="dialog__nav dialog__nav--left"></div>
+        <div class="dialog__nav dialog__nav--right"></div>
+        <aside class="l-event__meta">
+            <time datetime="" class="event-time">
+                <div class="event-time__date">
+                </div>
+                <div class="event-time__time">
+                </div>
+            </time>
+        </aside>
+        <header class="l-event__header">
+            <div class="excerpt excerpt--title">
+                <div class="excerpt__intro">
+                    <p>No event scheduled at this time.</p>
+                </div>
+            </div>
+        </header>
+        <div class="l-event__body">
+            <div class="event-body">
+                <div class="event-body__campus">
+                </div>
+                <div class="event-body__location">
+                </div>
+            </div>
+        </div>
+        <div class="campus-map__cta">
+            <a class="btn btn--large btn--full btn--disabled">
+                RSVP
+            </a>
+        </div>
+        <span class="campus-map__dialog--close">x</span>
+    </div>
+{% for event in events %}
+    {% set url = event.externalLink | length ? event.externalLink : siteUrl ~ 'rsvp/' ~ event.id ~ '-' ~ event.slug %}
+    {% set clickable = not(event.noRsvp) %}
+    <div class=" campus-map__dialog l-campus-events" data-campus-handle="{{ event.calendar.handle }}">
+        <div class="dialog__nav dialog__nav--left "></div>
+        <div class="dialog__nav dialog__nav--right "></div>
+        <aside class="l-event__meta">
+            <time datetime="{{ event.startDate | date('r') }}" class="event-time">
+                <div class="event-time__date">
+                    {{ event.startDate | date('l, F j, Y') }}
+                </div>
+                <div class="event-time__time">
+                    {{ event.startDate.format('g:i A') }} – {{ event.endDate.format('g:i A') }}
+                    {% if event.timeZone | length %}
+                        {{ event.timeZone }}
+                    {% endif %}
+                </div>
+            </time>
+        </aside>
+        <header class="l-event__header">
+            <div class="excerpt excerpt--title">
+                <div class="excerpt__intro">
+                    <p>{{ event.title }}</p>
+                </div>
+            </div>
+        </header>
+        <div class="l-event__body">
+            <div class="event-body">
+                <div class="event-body__campus">
+                    {{ event.calendar.name }}
+                </div>
+                <div class="event-body__location">
+                    {{ event.eventLocation }}
+                </div>
+            </div>
+        </div>
+        <div class="campus-map__cta">
+            {% if clickable %}
+                <a href="{{ url }}" class="btn btn--large btn--campus btn--full">
+                    RSVP
+                </a>
+            {% else %}
+                <a class="btn btn--large btn--dark btn--full btn--disabled">
+                    No RSVP Required
+                </a>
+            {% endif %}
+        </div>
+        <span class="campus-map__dialog--close">x</span>
+    </div>
+    {% if not loop.last %}
+        <div class="l-container">
+            <div class="separator--campus"></div>
+        </div>
+    {% endif %}
+{% endfor %}

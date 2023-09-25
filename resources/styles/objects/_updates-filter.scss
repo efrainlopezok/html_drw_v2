@@ -1,0 +1,79 @@
+//---------------------------------------------------------------
+//
+// Filter for Updates section
+// Mostly just a button, but there's some other stuff in there too
+//
+//---------------------------------------------------------------
+
+.updates-filter {
+  position: relative;
+  display: inline-block;
+  padding-bottom: rem(30px);
+
+  &:hover {
+    .updates-filter__list {
+      display: block;
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.updates-filter__btn {
+  @include no-underline;
+  @include type-cap-heading;
+  display: inline-block;
+  padding: 1.25em 1.5em;
+  border: 2px solid currentColor;
+  color: color(manatee);
+  background-color: transparent;
+  border-radius: 3px;
+  transition-property: background-color;
+  transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+  transition-duration: .25s;
+
+  &:hover {
+    border: 2px solid color(manatee);
+    background-color: color(manatee);
+    color: color(reverse);
+  }
+}
+
+.updates-filter__list {
+  position: absolute;
+  top: 4em;
+  visibility: hidden;
+  opacity: 0;
+  background-color: color(reverse);
+  padding: .5em 1em;
+  z-index: 99;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+  transition-property: transform, opacity;
+  transition-duration: .25s;
+  transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+  transform: translateY(-30px);
+  width: 200px;
+
+  &:before,
+  &:after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: inherit;
+    position: absolute;
+    top: 0;
+    left: 86px;
+  }
+
+  &:after {
+    width: 40px;
+    transform: translateX(-50%);
+  }
+
+  &:before {
+    transform: translateY(-50%) translateX(-50%) rotate(45deg);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+    z-index: -1;
+  }
+}

@@ -1,0 +1,21 @@
+{% extends "_layout" %}
+{% set ajaxFilters = craft.request.getQuery('filters') ? craft.request.getQuery('filters') : {date : ''} %}
+{% block content %}
+{% set myJs %}
+window.entryType = '{{ entry.type }}';
+{% if ajaxFilters['date'] is defined %}
+  window.entryDateFilter = '{{ ajaxFilters['date'] | url_encode }}';
+{% endif %}
+{% endset %}
+
+{% includeJs myJs %}
+{% cache unless craft.config.devMode %}
+  
+  {% if entry.type != 'contact' %}
+    {% include ['_partials/_page-header-' ~ entry.type, '_partials/_page-header'] %}
+  {% endif %}
+  
+  {% include ['_partials/_page-content-' ~ entry.type, '_partials/_page-content' ] %}
+
+{% endcache %}
+{% endblock %}

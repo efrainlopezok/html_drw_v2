@@ -1,0 +1,38 @@
+//---------------------------------------------------------------
+//
+// Icon link
+//
+//---------------------------------------------------------------
+
+.icon-link {
+  @include no-underline;
+
+  &:hover {
+    color: #fff;
+    
+    .icon-link__icon {
+      color: #fff;
+      background-color: color(bright-teal);
+    }
+  }
+}
+
+.icon-link__icon {
+  display: inline-block;
+  vertical-align: middle;
+  color: color(bright-teal);
+  background-color: color(humming-bird);
+  padding: rem(10px);
+  border-radius: 3px;
+  margin-right: .5em;
+  transition-property: background-color, color;
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition-duration: .25s;
+}
+
+.icon-link__text {
+  @include nice-underline;
+  display: inline-block;
+  vertical-align: middle;
+  color: color(manatee);
+}

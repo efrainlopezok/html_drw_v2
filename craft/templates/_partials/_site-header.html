@@ -1,0 +1,48 @@
+{% cache unless craft.config.devMode %}
+{% set openPositions = craft.drw.getNumberOfJobs() %}
+
+<header class="l-site-header" role="banner">
+  <div class="l-container">
+    <div class="l-site-header__logo">
+      <a href="/" class="site-logo">
+        <svg class="site-logo__svg">
+          <use xlink:href="#svg--drw-logo" />
+        </svg>
+      </a>
+    </div>
+    <div class="l-site-header__nav-toggle">
+      <a href="#" class="js-nav-toggle">
+        <svg class="icon icon--med">
+          <use xlink:href="#svg--icon-hamburger" />
+        </svg>
+      </a>
+    </div>
+    <div class="l-site-header__nav js-nav">
+      <nav role="navigation">
+        <ul class="site-nav site-nav--header">
+          {% for entry in navigation.mainNavigation %}
+            {% set blog = (craft.request.getSegment(2) == 'blog') %}
+            {% if blog %}
+              {% set active = ( entry.slug == 'blog' ) %}
+            {% else %}
+              {% set active = (craft.request.firstSegment == entry.slug) %}
+            {% endif %}
+            {% set isCareersItem = (entry.slug == 'careers') %}
+
+            <li {% if active %} class="is-active" {% endif %} >
+              <a href="{{ entry.url }}">
+                {{ entry.title }}
+
+                {% if isCareersItem %}
+                  <span class="pill">{{ openPositions }}</span>
+                {% endif %}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+    {% include '_partials/_alert' %}
+{% endcache %}

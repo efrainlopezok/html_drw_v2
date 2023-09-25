@@ -1,0 +1,17 @@
+{% import '_macros/_linkIt' as linkIt %}
+{% set ctaText = siteGlobals.recruitingCtaText | default('Learn More') %}
+
+<div class="excerpt excerpt--recruiting">
+  {% if siteGlobals.recruitingTitle | length %}
+    <h3 class="excerpt__title">{{ siteGlobals.recruitingTitle }}</h3>
+  {% endif %}
+  <div class="excerpt__body">
+    <p>{{ siteGlobals.recruitingCallout }}</p>
+  </div>
+
+  {% if siteGlobals.recruitingCalloutButton | length %}
+    <div class="excerpt__cta">
+      {{ linkIt.link(siteGlobals.recruitingCalloutButton, ['btn']) }}
+    </div>
+  {% endif %}
+</div>

@@ -1,0 +1,28 @@
+{% set filters = craft.request.getQuery('filters') %}
+{% set entryType = entry.type is defined ? entry.type : ' ' %}
+{% set type = craft.request.isAjax ? craft.request.getQuery('type') : entryType %}
+
+{% set updates = craft.drw.getUpdates(filters,type) %}
+
+{% set pg = craft.request.getQuery('page') | length ? craft.request.getQuery('page') : 1 %}
+{% set itemsPerPage = siteGlobals.numberOfUpdates | length ? siteGlobals.numberOfUpdates : 12 %}
+{% set start = (pg - 1) * itemsPerPage %}
+{% set pageUpdates = updates | slice(start, itemsPerPage) %}
+
+<div class="l-masonry-grid js-updates-grid">
+<div class="l-masonry-grid__item--sizer"></div>
+
+    {% for entry in pageUpdates %}
+        <div class="l-masonry-grid__item">
+            {% include '_partials/_card-update' %}
+        </div>
+    {% endfor %}
+
+
+</div>
+{% include '_partials/_archive' %}
+{% set inactive = pageUpdates | length >= itemsPerPage ? '' : 'is-inactive' %}
+    <div class="l-section__cta">
+        <a href="#" class="btn btn--large {{ inactive }}" id="load-more">Load More</a>
+    </div>
+

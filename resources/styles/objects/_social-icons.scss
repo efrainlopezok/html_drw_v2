@@ -1,0 +1,42 @@
+//---------------------------------------------------------------
+//
+// Social Icons
+// A ul of social links with icons
+//
+//---------------------------------------------------------------
+
+.social-icons {
+  @include block-list;
+  line-height: 1;
+  margin-top: 2rem;
+
+  @include breakpoint( bp(medium) ) {
+    margin-top: 0;
+    text-align: right;
+  }
+
+  > li {
+    display: inline-block;
+    margin-right: .5em;
+    
+    @include breakpoint( bp(medium) ) {
+      margin-right: 0;
+      margin-left: 1em;
+    }
+  }
+
+  a {
+    @include no-underline;
+    background-image: none;
+    display: block;
+    line-height: 0.5;
+  }
+}
+
+.social-icons--share {
+  text-align: left;
+
+  > li {
+    margin: rem(0 10px 0 0);
+  }
+}

@@ -1,0 +1,38 @@
+{% set display_author = false %}
+{% if entry.type == 'blog' %}
+  {% set display_author = true %}
+{% endif %}
+
+{% set imageSize = {
+  mode: 'crop',
+  width: 400,
+  height: 400
+} %}
+{% set image = entry.thumbnailImage | length ? entry.thumbnailImage.first.getUrl(imageSize) %}
+<div class="card-body {% if image | length %} card-body--thumb {% endif %} u-overlay u-overlay--inherit">
+
+  {% if image %}
+    <div class="img img--square">
+      <img src="{{ image }}" alt="{{ entry.title }}">
+    </div>
+  {% endif %}
+
+  <div class="card-body__caption">
+    <h1 class="card-title">{{ entry.title }}</h1>
+    {% if display_author %}
+    <div class="author-meta">
+      {% set authorName = entry.author.preferredName  ~ ' ' ~ entry.author.lastName ?: entry.author.fullName %}
+      {% set headshotSrc = entry.author.getPhotoUrl(35) %}
+
+      {% if headshotSrc | length %}
+        <div class="author-meta__avatar">
+          <img src="{{ headshotSrc }}" alt="{{ authorName }}" class="profile-img">
+        </div>
+      {% endif %}
+
+      <p class="author-meta__name">{{ authorName }}</p>
+
+    </div>
+    {% endif %}
+  </div>
+</div>

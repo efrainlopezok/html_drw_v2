@@ -1,0 +1,160 @@
+//---------------------------------------------------------------
+//
+// Buttons
+// All the buttons!
+//
+//---------------------------------------------------------------
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.btn {
+  @include no-underline;
+  @include type-cap-heading;
+  background: none;
+  border: none;
+  padding: 0;
+  background-color: color(humming-bird);
+  display: inline-block;
+  padding: .5em 1em;
+  border-radius: 3px;
+  transition-property: background-color, color;
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition-duration: .25s;
+
+  &:hover,
+  &:focus {
+    outline: 0;
+    background-color: color(bright-teal);
+    color: color(reverse);
+  }
+}
+
+.btn--titled {
+  @include type-cap-heading;
+  text-align: center;
+  padding-left: 2em;
+  padding-right: 2em;
+  margin-right: 1.2em;
+  line-height: 1.5;
+
+  .btn__subtitle {
+    text-decoration: none;
+    display: block;
+    margin-bottom: -0.125em;
+  }
+}
+
+.btn--dark {
+  background-color: color(dark-blue);
+  color: color(bright-teal);
+}
+
+.btn--large {
+  padding: 1.25em 1.5em;
+}
+
+.btn--xlarge {
+  padding: 1.75em;
+  font-size: 0.9rem;
+}
+
+.btn--full {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.btn.is-loading {
+  background-color: color(dark-blue);
+  color: #fff;
+  animation: pulse 1.5s linear infinite;
+}
+
+.btn.is-inactive {
+  opacity: 0.4;
+  &:focus {
+    opacity: 0.4;
+    background-color: color(humming-bird);
+    color: color(medium-blue);
+  }
+  &#load-more {
+    display: none;
+  }
+
+  &:hover {
+    background-color: color(humming-bird);
+    color: color(bright-teal);
+    cursor: default;
+  }
+}
+
+.btn--disabled {
+  background-color: color(mercury);
+  color: shade(color(mercury), 30);
+
+  &:hover {
+    background-color: color(mercury);
+    color: shade(color(mercury), 30);
+    cursor: default;
+  }
+}
+
+.btn--round {
+  @include no-underline;
+  @include type-cap-heading;
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+  color: color(reverse);
+
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: ' ';
+    width: 100%;
+    height: 100%;
+    background-color: color(bright-teal);
+    border-radius: 50%;
+    //border: 2px solid color(bright-teal);
+    transition-property: background-color;
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-duration: .25s;
+  }
+
+  &:hover,
+  &:focus {
+    &:before {
+      background-color: color(cumberland-light);
+    }
+  }
+}
+
+.btn__abbreviation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: rem(14px);
+}
+
+.btn--campus {
+  background-color: color(bright-teal);
+  color: color(reverse);
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    outline: 0;
+    background-color: color(cumberland-light);
+    color: color(reverse);
+  }
+
+}

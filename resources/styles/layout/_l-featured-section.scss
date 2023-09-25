@@ -1,0 +1,29 @@
+//---------------------------------------------------------------
+//
+// Featured Section
+// Responsible for full width featured layouts
+//
+//---------------------------------------------------------------
+
+.l-feature-section {
+  @include content-container;
+  width: 100%;
+}
+
+.l-feature-section__content {
+  @include typesize-small;
+  line-height: 1.6;
+  
+  @include breakpoint(bp(large)) {
+    @include span(5 of 12 at 2);
+  }
+}
+
+.l-feature-section--right {
+  
+  .l-feature-section__content {
+    @include breakpoint(bp(large)) {
+      @include span(5 of 12 at 8);
+    }
+  }
+}

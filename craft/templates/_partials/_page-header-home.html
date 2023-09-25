@@ -1,0 +1,47 @@
+{% set headerSize = {
+  mode: 'crop',
+  position: entry.cropAnchor | length ? entry.cropAnchor | kebab : 'top-left',
+  width: 1280,
+  height: 600,
+} %}
+
+{% set title = entry.headerTitle | length ? entry.headerTitle : entry.title %}
+
+{% for block in entry.headerVideo %}
+  {% if block.type == 'uploadedVideo' %}
+
+    {% if entry.headerMediaType == 'image' %}
+      {% set backgroundImageSrc = entry.headerImage | length ? entry.headerImage.first.getUrl(headerSize) : false %}
+    {% else %}
+      {% set backgroundImageSrc = block.mobileImage | length ? block.mobileImage.first.getUrl(headerSize) : false %}
+      {% set posterImage = block.posterImage | length ? block.posterImage.first.getUrl(headerSize) : '' %}
+    {% endif %}
+
+    <div class="l-page-header u-bg u-bg--image {% if entry.headerOverlay %} u-overlay u-overlay--dark-blue {% endif %}" style="background-image: url({{ backgroundImageSrc }});">
+      <div class="l-page-header__inner">
+        <div class="l-container">
+          <div class="heading-group">
+            <h1 class="heading-group__title {% if entry.url == siteUrl %} js-fancy-heading {% endif %}">{{ title }}</h1>
+            {% if entry.headerSubtitle | length %}
+              <h2 class="heading-group__subtitle">{{ entry.headerSubtitle }}</h2>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+    
+      <div class="l-page-header__video">
+        <video autoplay="1" muted="1" loop="1" poster="{{ posterImage }}" >
+        {% for format in ['mp4', 'webm', 'ogv'] %}
+          {% for video in block.videoUploads %}
+            {% if video.extension == format %}
+              <source src="{{ video.url }}" type="{{ video.mimeType }}" />
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+        </video>
+      </div>
+    
+    </div>
+  {% endif %}
+{% endfor %}

@@ -1,0 +1,18 @@
+{% extends "_layout" %}
+{% block content %}
+    {% cache unless craft.config.devMode %}
+
+        {% include ['_partials/_page-header-' ~ entry.type, '_partials/_page-header'] %}
+        {% set page = 0 %}
+
+        <section class="u-bg--light-gray">
+
+                <section class="l-article__main">
+                    {% set test = craft.drw.testing() %}
+                    {{ test }}
+                </section>
+
+        </section>
+
+    {% endcache %}
+{% endblock %}

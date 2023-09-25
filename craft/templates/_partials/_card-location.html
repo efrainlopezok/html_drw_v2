@@ -1,0 +1,21 @@
+{% set address = location.locationAddress %}
+
+<article class="card card--location">
+  <div class="card__header">
+    <aside class="card-meta">
+      <div class="card-meta__category">
+        <div class="icon-text">
+          <span class="icon-text__text">
+            {{ location.title }}
+          </span>
+        </div>
+      </div>
+      <div class="card-meta__clock">
+        {% include '_partials/_clock' %}
+      </div>
+    </aside>
+  </div>
+  <section class="card__body">
+    {% include '_partials/_card-body-location' %}
+  </section>
+</article>

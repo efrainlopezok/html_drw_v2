@@ -1,0 +1,39 @@
+//---------------------------------------------------------------
+//
+// Career Listing Layout
+// Article list view used only for career listings right now
+//
+//---------------------------------------------------------------
+
+.l-career-listing {
+  border-top: 1px solid color(iron);
+  padding: rem(50px 0);
+
+  &:first-child {
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  @include breakpoint(bp(large)) {
+    padding: rem(60px 0);
+  }
+}
+
+.l-career-listing__meta {
+  margin-bottom: rem(10px);
+  margin-top: rem(10px);
+}
+
+.l-career-listing__header {
+  margin-bottom: rem(5px);
+
+  a {
+    color: color(dark-blue);
+  }
+} 
+
+.l-career-listing__footer {
+  @include type-cap-heading;
+  color: color(bright-teal);
+  margin-top: rem(10px);
+}

@@ -1,0 +1,55 @@
+{% set url = event.externalLink | length ? event.externalLink : siteUrl ~ 'rsvp/' ~ event.id ~ '-' ~ event.slug %}
+{% set clickable = not(event.noRsvp) %}
+
+{% if clickable %}
+  <a href="{{ url }}" {%- if event.externalLink | length %}target="_blank" rel="noopener noreferrer"{% endif -%} class="l-event js-campus-events__slide" data-campus="{{ event.calendar.handle }}">
+{% else %}
+  <span class="l-event js-campus-events__slide" data-campus="{{ event.calendar.handle }}">
+{% endif %}
+
+  <aside class="l-event__meta">
+    <time datetime="{{ event.startDate | date('r') }}" class="event-time">
+      <div class="event-time__date">
+        {{ event.startDate | date('l, F j, Y') }}
+      </div>
+      <div class="event-time__time">
+        {{ event.startDate.format('g:i A') }} – {{ event.endDate.format('g:i A') }}
+        {% if event.timeZone | length %}
+          {{ event.timeZone }}
+        {% endif %}
+      </div>
+    </time>
+  </aside>
+  <header class="l-event__header">
+    <h1 class="event-title">
+      {{ event.title }}
+    </h1>
+  </header>
+  <div class="l-event__body">
+    <div class="event-body">
+      <div class="event-body__campus">
+        {{ event.calendar.name }}
+      </div>
+      <div class="event-body__location">
+        {{ event.eventLocation }}
+      </div>
+    </div>
+  </div>
+  <div class="l-event__cta">
+    {% if clickable %}
+      <span class="btn btn--large btn--dark btn--full">
+        RSVP
+      </span>
+    {% else %}
+      <span class="btn btn--large btn--dark btn--full btn--disabled">
+        No RSVP Required
+      </span>
+    {% endif %}
+  </div>
+
+
+{% if clickable %}
+  </a>
+{% else %}
+  </span>
+{% endif %}

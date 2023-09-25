@@ -1,0 +1,6 @@
+<section class="l-section l-section--contentGrid">
+  <div class="l-container">
+    {% set image = block.featuredImage.first %}
+    <img src="{{ image.url({ width: 900, height: 450 }) }}" alt="{{ image.title }}" />
+  </div>
+</section>

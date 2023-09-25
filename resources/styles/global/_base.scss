@@ -1,0 +1,72 @@
+//---------------------------------------------------------------
+//
+// Base
+// Global settings / styles
+//
+//---------------------------------------------------------------
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  @include type-body;
+  line-height: 1.9;
+  color: color(dark-blue);
+
+  @include breakpoint(bp(medium)) {
+    &:before {
+      content: 'medium';
+      visibility: hidden;
+      position: absolute;
+      z-index: -1
+    }
+  }
+
+  @include breakpoint(bp(large)) {
+    &:before {
+      content: 'large';
+    }
+  }
+}
+
+main {
+  // Only here for the article BG, should keep an eye on it
+  // to make sure it has no adverse effects
+  overflow: hidden;
+}
+
+a {
+  @include nice-underline;
+  color: color(bright-teal);
+  text-decoration: none;
+}
+
+img {
+  display: inline-block;
+  max-width: 100%;
+}
+
+figure,
+blockquote,
+p {
+  margin: 0;
+}
+
+hr {
+  margin: 0;
+  border: 0;
+  border-bottom: 1px solid darken( color(light-gray), 8);
+}
+
+address {
+  font-style: normal;
+}
+
+.svg-symbol {
+  display: none;
+}

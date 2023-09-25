@@ -1,0 +1,12 @@
+<address itemscope itemtype="http://schema.org/PostalAddress">
+    <div class="address__name" itemprop="name">{{ address.name }}</div>
+    <div class="address__street" itemprop="streetAddress">{{ address.street }}</div>
+    <div class="address__street2" itemprop="streetAddress">{{ address.street2 }}</div>
+    <div>
+        <span class="address__locality" itemprop="addressLocality">{{ address.city }}</span>
+        <span class="address__region" itemprop="addressRegion">{{ address.region }}</span>
+        <span class="address__postal-code" itemprop="postalCode">{{ address.postalCode }}</span>
+    </div>
+
+    <div class="address__phone">{{ location.locationPhone }}</div>
+</address>

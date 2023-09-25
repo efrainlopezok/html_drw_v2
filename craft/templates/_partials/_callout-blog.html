@@ -1,0 +1,10 @@
+<li class="{{ base_class }}__item {% if not evenItems %} {{ base_class }}__item--full {% endif %}">
+  <article class="excerpt excerpt--cta">
+    <div class="excerpt__body">
+      <p>{{ siteGlobals.blogCallout }}</p>
+    </div>
+    <div class="excerpt__cta">
+      <a href="{{ siteGlobals.blogCalloutCtaLink | default('/updates') }}" class="btn btn--large">{{ siteGlobals.blogCalloutCtaText | default('Learn More') }}</a>
+    </div>
+  </article>
+</li>

@@ -1,0 +1,54 @@
+{% extends "_layout" %}
+{% block content %}
+{% cache unless craft.config.devMode %}
+
+  {% include ['_partials/_page-header-' ~ entry.type, '_partials/_page-header'] %}
+  {% set page = 0 %}
+
+  <section class="u-bg--light-gray">
+    {% if entry.openPositionsTitle | length %}
+    <div class="listings-heading">
+      <div class="l-container">
+        <h1 class="listings-heading__title">{{ entry.openPositionsTitle }}</h1>
+      </div>
+    </div>
+    {% endif %}
+    <div class="l-article l-article--flipped">
+      <aside class="l-article__aside">
+
+        {% include 'career-listings/_cities' %}
+        {% include 'career-listings/_categories' %}
+      </aside>
+      <section class="l-article__main">
+        <div class="js-listings__wrapper js-filter__items">
+          {% set query = {} %}
+          {% set category = null %}
+          {% set location = null %}
+
+          {% if craft.request.getQuery('location') %}
+            {% set location = craft.request.getQuery('location') %}
+            {% set query = query|merge( { locations: [location] } ) %}
+          {% endif %}
+
+          {% if craft.request.getQuery('categories') %}
+            {% set category = craft.request.getQuery('categories') %}
+            {% set query = query|merge( { categories: [category] } ) %}
+          {% endif %}
+          {% set jobs = craft.drw.getJobs(query) %}
+          {% set itemsPerPage = 50 %}
+          {% set start = pagenumber is defined ? (pagenumber * itemsPerPage) : 0 %}
+
+          {% for job in jobs | slice(start, itemsPerPage) %}
+            {% include 'career-listings/_single-listing' %}
+          {% endfor %}
+          {% if jobs|length == 0 %}
+            <h3> No results found {{ category ? 'for '~category : '' }}{{ location ? ' in '~location : '' }}</h3>
+          {% endif %}
+        </div>
+      </section>
+
+    </div>
+  </section>
+
+{% endcache %}
+{% endblock %}

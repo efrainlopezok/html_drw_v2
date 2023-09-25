@@ -1,0 +1,27 @@
+//---------------------------------------------------------------
+//
+// Slider styles
+// Includes a few flickity overrides
+//
+//---------------------------------------------------------------
+
+
+.slider {
+  background-color: color(light-gray);
+  padding-bottom: rem(60px);
+
+  @include breakpoint(bp(large)) {
+    @include ir(45%, '.flickity-viewport');
+  }
+}
+
+.slider__slide {
+  width: 100%;
+  @include breakpoint(bp(large)) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}

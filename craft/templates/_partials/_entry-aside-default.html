@@ -1,0 +1,44 @@
+<div class="l-entry-aside">
+  <div class="l-entry-aside__author">
+    <div class="excerpt excerpt--aside excerpt--author">
+      {% set authorName = entry.author.preferredName  ~ ' ' ~ entry.author.lastName ?: entry.author.fullName %}
+      {% set headshotSrc = entry.author.getPhotoUrl(60) %}
+      
+      {% if headshotSrc | length %}
+        <div class="excerpt__thumbnail">
+          <img src="{{ headshotSrc }}" alt="{{ authorName }}" class="profile-img">
+        </div>
+      {% endif %}
+
+      <h4 class="excerpt__title">{{ authorName }}</h4>
+      <div class="excerpt__body">{{ entry.author.jobTitle }}</div>
+    </div>
+  </div>
+  
+  <div class="l-entry-aside__date">
+    <div class="excerpt excerpt--aside">
+      Posted <time datetime="{{ entry.postDate | date('c') }}">{{ entry.postDate | date("F j, Y") }}</time>
+    </div>
+  </div>
+  
+  {% set tags = entry.tags %}
+  {% if tags | length %}
+  {% set tagHtml = [] %}
+  <div class="l-entry-aside__tags">
+    <div class="excerpt excerpt--aside">
+      {% for tag in tags %}
+        {% set tag = '<a href="#">' ~ tag.title ~ '</a>' %}
+        {% set tagHtml = tagHtml | merge([tag]) %}
+      {% endfor %}
+    
+      Filed under {{ tagHtml | join(', ') | raw }}
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="l-entry-aside__share">
+    <div class="l-share-entry__links">
+      {% include '_partials/_entry-share' %}
+    </div>
+  </div>
+</div>

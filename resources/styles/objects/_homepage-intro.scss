@@ -1,0 +1,22 @@
+//---------------------------------------------------------------
+//
+// Homepage Intro
+// Pretty specific module for the homepage intro copy
+//
+//---------------------------------------------------------------
+
+.homepage-intro {
+  font-size: rem(22px);
+  font-weight: 300;
+
+  @include breakpoint(bp(medium)) {
+    font-size: rem(24px);
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  @include breakpoint(bp(large)) {
+    font-size: rem(30px);
+    line-height: 1.8;
+  }
+}

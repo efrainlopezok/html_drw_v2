@@ -1,0 +1,26 @@
+//---------------------------------------------------------------
+//
+// Connect
+// Connect with us section on contact page
+//
+//---------------------------------------------------------------
+
+.connect {
+  @include breakpoint(bp(medium)) {
+    margin-bottom: rem(40px);
+  }
+}
+
+.connect__title {
+  @include type-excerpt-title;
+  margin-bottom: rem(15px);
+}
+
+.connect__list {
+  @include block-list;
+  @include type-caption;
+
+  > li {
+    margin-bottom: 1.25em;
+  }
+}

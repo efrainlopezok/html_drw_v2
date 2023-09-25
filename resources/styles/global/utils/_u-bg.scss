@@ -1,0 +1,38 @@
+//---------------------------------------------------------------
+//
+// Background Utilities
+// Utility for controlling backgrounds
+//
+//---------------------------------------------------------------
+
+.u-bg {
+  // Not sure we need anything here
+}
+
+.u-bg--image {
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+// Only on the homepage map section
+.u-bg--map {
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 65%;
+}
+
+.u-bg--bio {
+  background-position: top right;
+
+  @include breakpoint(bp(large)) {
+    background-position: 50% 50%;
+  }
+}
+
+// Outputs a u-bg--#{$color} class for each color in the colors map
+@each $color, $value in $colors {
+  .u-bg--#{$color} {
+    background-color: $value;
+  }
+}

@@ -1,0 +1,33 @@
+{% set bioTransform = {
+  mode: 'crop',
+  position: employee.cropAnchor | length ? employee.cropAnchor | kebab : 'top-left',
+  width: 400,
+  height: 336
+} %}
+{% set imageSrc = employee.thumbnailImage | length ? employee.thumbnailImage.first.getUrl(bioTransform) : '' %}
+
+<a href="{{ employee.url }}" class="card card--bio">
+  <article>
+    <div class="card__header">
+      <aside class="card-meta">
+        <div class="card-meta__category">
+          <span class="icon-text__text">
+            {{ employee.bioEmployeeName }}
+          </span>
+        </div>
+        <div class="card-meta__date">
+          {{ employee.bioEmployeeTitle }}
+        </div>
+      </aside>
+    </div>
+    <section class="card__body">
+      <div class="card-body">
+        {% if imageSrc | length %}
+        <figure class="img img--square {% if employee.slug == craft.request.lastSegment() %} u-overlay u-overlay--dark-blue {% endif %}">
+          <img src="{{ imageSrc }}" alt="{{ employee.bioEmployeeName }}">
+        </figure>
+        {% endif %}
+      </div>
+    </section>
+  </article>
+</a>

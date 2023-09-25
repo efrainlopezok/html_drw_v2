@@ -1,0 +1,29 @@
+{% extends "_campus" %}
+
+{% set title = "Thank You" %}
+{% set eventEntry = craft.calendar.event(eventId) %}
+{% set form = craft.sproutForms.form('eventRegistration') %}
+{% set submittedEntry = craft.sproutForms.getEntry(form) %}
+
+
+{% block content %}
+  <div class="l-container l-container--404">
+    <div class="heading-group heading-group--dark">
+      <h1 class="heading-group__title">Thank you!</h1>
+      <h2 class="heading-group__subtitle">
+        We look forward to seeing you at the {{ eventEntry.title }} at {{ eventEntry.calendar.name }} on {{ eventEntry.startDate.format('F j') }} at {{ eventEntry.startDate.format('g:ia') }}. Before we meet in person, learn more about the campus opportunities at DRW.
+      </h2>
+      <div class="heading-group__btn">
+        {% if onCampus.onCampusNavigation | length %}
+          <div class="l-link-group">
+            {% for entry in onCampus.onCampusNavigation %}
+              <a href="{{ entry.url }}" class="btn--campus btn btn--xlarge btn--full">
+                {{ entry.title }}
+              </a>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,51 @@
+//==============================================================================
+// Campus events
+// Layout for event cards on campus page
+//
+// Modifiers:
+// -----------------------------------------------------------------------------
+// - Modifier      : Modifier Description
+//==============================================================================
+
+// -----------------------------------------------------------------------------
+// Base
+// -----------------------------------------------------------------------------
+
+.l-campus-events {
+  text-align: center;
+  //background-color: color(mercury);
+}
+
+// -----------------------------------------------------------------------------
+// Elements
+// -----------------------------------------------------------------------------
+
+.l-campus-events__footer {
+  margin-top: rem(30);
+}
+
+.l-campus-events__filter {
+  margin-bottom: rem(50);
+  margin-top: rem(30);
+}
+
+.l-campus-events__title {
+  display: block;
+  margin-bottom: 0;
+  text-align: left;
+}
+
+.l-campus-events__body {
+  clear: both;
+}
+
+.l-campus-events__map {
+  margin-top: 3.75rem;
+  position: relative;
+
+}
+
+svg {
+  display:block;
+  width: 100%;
+}

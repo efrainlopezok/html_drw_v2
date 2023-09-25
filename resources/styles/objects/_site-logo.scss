@@ -1,0 +1,41 @@
+//---------------------------------------------------------------
+//
+// Site Logo
+// Controls appearance of logo
+//
+//---------------------------------------------------------------
+
+.site-logo {
+  @include no-underline;
+  @include ir(percentage(49.9/151.4), '.site-logo__svg');
+  display: block;
+}
+
+.site-logo__svg {
+  color: color(dark-blue);
+  display: inline-block;
+  position: relative;
+  width: 100%;
+
+  .campus & {
+    color: color(reverse);
+  }
+
+  .page--thank-you & {
+    color: color(dark-blue);
+  }
+}
+
+.site-logo--footer {
+  .site-logo__svg {
+    color: #fff;
+  }
+}
+
+.site-logo--inline {
+  display: inline-block;
+  width: 68px;
+  height: 23px;
+  padding: 0;
+  margin-right: .16em;
+}

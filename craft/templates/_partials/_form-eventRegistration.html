@@ -1,0 +1,37 @@
+{% import '_macros/_forms' as formHelper %}
+
+{# Get our Form data #}
+{% set form = craft.sproutForms.form('eventRegistration') %}
+{% set eventEntry = craft.calendar.event(eventId) %}
+{% set eventValue = eventEntry.startDate | date('m.d.Y') ~ ' – ' ~ eventEntry.title ~ ', ' ~ eventEntry.calendar.name %}
+
+{# Get our Form Entry data to manage error states and re-populating field values #}
+{% set submittedEntry = craft.sproutForms.getEntry(form) %}
+
+<form method="post" accept-charset="UTF-8">
+  {{ getCsrfInput() }}
+  <input type="hidden" name="action" value="sproutForms/entries/saveEntry">
+  <input type="hidden" name="handle" value="{{ form.handle }}">
+  <input type="hidden" name="redirect" value="{{ craft.request.url }}/thank-you">
+  {{ formHelper.input('fields[' ~ form.getField('event').handle ~ ']', eventValue, 'hidden') }}
+
+  <div class="l-form-body">
+    {% for tab in form.getFieldLayout().getTabs() %}
+      <div class="l-form-body__row">
+        {{ formHelper.textField(form.getField('firstName'), submittedEntry) }}
+        {{ formHelper.textField(form.getField('lastName'), submittedEntry) }}
+      </div>
+      <div class="l-form-body__row">
+        {{ formHelper.textField(form.getField('email'), submittedEntry) }}
+      </div>
+      <div class="l-form-body__row">
+        {{ formHelper.textField(form.getField('linkedinUrl'), submittedEntry) }}
+      </div>
+    {% endfor %}
+
+    <div class="l-form-body__submit">
+      <input type="submit" value="Submit">
+    </div>
+  </div>
+
+</form>

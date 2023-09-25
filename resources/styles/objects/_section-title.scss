@@ -1,0 +1,19 @@
+//---------------------------------------------------------------
+//
+// Section Title
+// Title with a bit o' margin below it
+//
+//---------------------------------------------------------------
+
+.section-title {
+  @include type-h3;
+  margin-bottom: rem(20px);
+
+  @include breakpoint(bp(large)) {
+    width: 75%;
+  }
+}
+
+.section-title--extra {
+  margin-bottom: rem(60px);
+}

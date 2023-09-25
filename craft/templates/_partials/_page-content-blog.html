@@ -1,0 +1,13 @@
+<section class="l-section l-section--small u-bg--light-gray">
+  <div class="l-container l-section--blog">
+  <div class="grid-wrapper">
+
+      {% if entry.type is defined and entry.type != 'blog' %}
+          {% include '_partials/_updates-filter' %}
+      {% endif %}
+      {% include '_partials/_get-updates-blog' %}
+
+  </div>
+
+  </div>
+</section>

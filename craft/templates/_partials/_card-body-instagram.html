@@ -1,0 +1,7 @@
+{% if entry.thumbnail | length %}
+<div class="card-body">
+  <figure class="img" style="padding-top: {{ (entry.thumbnail.height / entry.thumbnail.width) * 100 }}%">
+    <img src="{{ entry.thumbnail.url }}" alt="Instagram Image — {{ entry.postDate | date('F n, Y') }} ">
+  </figure>
+</div>
+{% endif %}

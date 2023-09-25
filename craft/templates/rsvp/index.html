@@ -1,0 +1,20 @@
+{% set entry = entry | default(onCampus.rsvpEntry.first) %}
+
+{% extends "_campus" %}
+{% set title = "Event Registration" %}
+
+{% block content %}
+  {% include '_partials/_page-header-simple-rsvp' %}
+
+  <section class="l-section">
+    <div class="l-container l-container--form">
+      {% if entry.pageIntro | length %}
+      <div class="l-section l-section--intro">
+        {{ entry.pageIntro }}
+      </div>
+      {% endif %}
+
+      {% include ['_partials/_form-eventRegistration'] %}
+    </div>
+  </section>
+{% endblock %}

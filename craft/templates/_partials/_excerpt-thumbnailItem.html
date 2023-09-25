@@ -1,0 +1,30 @@
+{% set modifier =  layout is defined ? 'excerpt--' ~ layout : '' %}
+
+<article class="excerpt {{ modifier }}">
+  {% if block.itemThumbnail | length %}
+    <figure class="excerpt__thumbnail">
+      <img src="{{ block.itemThumbnail.first.getUrl({ width: 400, height: 300 }) }}" alt="{{ block.itemTitle }}">
+    </figure>
+  {% endif %}
+
+  <h3 class="excerpt__title">{{ block.itemTitle }}</h3>
+
+  <div class="excerpt__body">
+    {{ block.itemBody }}
+  </div>
+
+  {% if block.itemCta | length %}
+    {% set link = block.itemCta %}
+    <div class="excerpt__cta">
+
+      <a href="{{ link.url }}"
+         title="{{ link.text }}"
+         {% if link.target | length %}target="{{ link.target }}"{% endif %}
+         class="btn"
+      >
+        {{ link.text }}
+     </a>
+    </div>
+  {% endif %}
+
+</article>

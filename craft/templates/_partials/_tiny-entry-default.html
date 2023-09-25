@@ -1,0 +1,9 @@
+<article class="tiny-entry">
+  {% if directionTitle is defined and directionTitle | length %}
+    <div class="tiny-entry__eyebrow">{{ directionTitle }}</div>
+  {% else %}
+    <time datetime="{{ entry.postDate | date('c') }}" class="tiny-entry__eyebrow">{{ entry.postDate | date('M n') }}</time>
+  {% endif %}
+  <h3 class="tiny-entry__title"><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
+  <a href="{{ entry.url }}" class="btn">Read More</a>
+</article>

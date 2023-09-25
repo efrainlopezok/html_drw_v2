@@ -1,0 +1,37 @@
+{% if block.cardWidth == 'two-thirds' %}
+  {% set width = 800 %}
+  {% set imgClass = 'img--40' %}
+{% else %}
+  {% set width = 400 %}
+  {% set imgClass = 'img--75' %}
+{% endif %}
+
+{% set widthName = block.cardWidth | length ? block.cardWidth : 'one-third' %}
+
+{% set cardImageTransform = {
+  mode: 'crop',
+  width: width,
+  height: 320
+} %}
+{% set cardImageSrc = block.cardImage | length ? block.cardImage.first.getUrl(cardImageTransform) : '' %}
+
+<article class="card card--default card--{{ widthName }}">
+  <div class="card__header">
+    <aside class="card-meta">
+      <span class="icon-text__text">
+        {{ block.cardTitle }}
+      </span>
+    </aside>
+  </div>
+  <section class="card__body">
+    <div class="card-body">
+
+      {% if cardImageSrc | length %}
+      <figure class="img {{ imgClass }}">
+        <img src="{{ cardImageSrc }}" alt="{{ block.cardTitle }}">
+      </figure>
+      {% endif %}
+
+    </div>
+  </section>
+</article>

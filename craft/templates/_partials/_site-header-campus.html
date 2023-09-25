@@ -1,0 +1,37 @@
+{% cache unless craft.config.devMode %}
+
+<header class="l-campus-header" role="banner">
+  <div class="l-container">
+    <div class="l-campus-header__logo">
+      <a href="{{ url('2016') }}" class="site-logo">
+        <svg class="site-logo__svg">
+          <use xlink:href="#svg--drw-logo" />
+        </svg>
+      </a>
+    </div>
+    <div class="l-campus-header__nav-toggle">
+      <a href="#" class="js-nav-toggle">
+        <svg class="icon icon--med">
+          <use xlink:href="#svg--icon-hamburger" />
+        </svg>
+      </a>
+    </div>
+    <div class="l-campus-header__nav js-nav">
+      <nav role="navigation">
+        <ul class="site-nav site-nav--header site-nav--campus">
+          {% for entry in onCampus.onCampusNavigation %}
+            {% set active = (craft.request.firstSegment == entry.slug) %}
+
+            <li {% if active %} class="is-active" {% endif %} >
+              <a href="{{ entry.url }}">
+                {{ entry.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+    {% include '_partials/_alert' %}
+{% endcache %}

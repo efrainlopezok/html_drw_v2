@@ -1,0 +1,41 @@
+{% set title = block.sectionItemTitle %}
+{% set title = block.sectionItemCtaLink ? '<a href="' ~ block.sectionItemCtaLink ~ '">' ~ block.sectionItemTitle ~ '</a>' : block.sectionItemTitle %}
+
+
+<article class="excerpt excerpt--section">
+  
+  {% if block.illustration | length %}
+  <figure class="excerpt__thumbnail">
+    <svg class="icon icon--illustration">
+      <use xlink:href="#svg--illustration-{{ block.illustration | kebab }}" />
+    </svg>  
+  </figure>
+  {% endif %}
+
+  <div class="excerpt__header">
+    <a name="{{ title | lower }}"></a>
+    <h3 class="excerpt__title">{{ title | raw }}</h3>
+    <h5 class="excerpt__subtitle">{{ block.sectionItemSubtitle }}</h5>
+  </div>
+  
+  <div class="excerpt__body">
+    <div class="rich-text">
+      {{ block.sectionItemBody }}
+    </div>
+  </div>
+  
+  {% if block.careerCategory != 'Default' and craft.drw.getJobCountByCategory(block.careerCategory) > 0%}
+    {% set cat = block.careerCategory %}
+    {% set jobCount = craft.drw.getJobCountByCategory(cat) %}
+    <div class="excerpt__cta">
+      <a href="{{ url('careers/listings', {categories: cat }) }}" class="text-btn">
+        {{ block.sectionItemCtaText | length ? block.sectionItemCtaText : 'See all ' ~ cat ~ ' jobs' }} — <span>{{ jobCount }}</span>
+      </a>
+    </div>
+  {% elseif block.sectionItemCtaLink | length %}
+  <div class="excerpt__cta">
+    <a href="{{ block.sectionItemCtaLink }}" class="text-btn">{{ block.sectionItemCtaText | length ? block.sectionItemCtaText : 'Learn More' }}</a>
+  </div>
+  {% endif %}
+
+</article>

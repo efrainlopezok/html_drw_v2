@@ -1,0 +1,57 @@
+//---------------------------------------------------------------
+//
+// Card Meta
+// The meta section of an update card
+//
+//---------------------------------------------------------------
+
+.card-meta {  
+  @include container;
+  @include type-cap-heading;
+  position: relative;
+  color: color(manatee);
+
+  a {
+    @include no-underline;
+    color: currentColor;
+  }
+
+  svg {
+    fill: currentColor;
+  }
+}
+
+.card-meta__category {
+  @include span(6 of 12 at 1);
+}
+
+.card-meta__date {
+  @include span(6 of 12 at 7);
+  text-align: right;
+  color: color(manatee);
+}
+
+.card-meta__clock {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.card-meta--twitter {
+  color: color(twitter-blue);
+}
+
+.card-meta--bio {
+  color: color(dark-blue);
+}
+
+.card-meta--instagram {
+  color: color(manatee);
+}
+
+.card-meta--blog {
+  color: color(dark-blue);
+}

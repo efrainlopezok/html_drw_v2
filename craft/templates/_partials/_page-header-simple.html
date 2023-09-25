@@ -1,0 +1,14 @@
+{% set title = entry.headerTitle | length ? entry.headerTitle : entry.title %}
+
+<div class="l-page-header l-page-header--simple">
+  <div class="l-page-header__inner">
+    <div class="l-container">
+      <div class="heading-group heading-group--simple">
+        <h1 class="heading-group__title">{{ title }}</h1>
+        {% if entry.headerSubtitle | length %}
+          <h2 class="heading-group__subtitle">{{ entry.headerSubtitle }}</h2>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

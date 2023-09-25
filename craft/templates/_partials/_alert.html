@@ -1,0 +1,19 @@
+{%  set plugin = craft.plugins.getPlugin('drwAlert', false) %}
+{% if plugin.isEnabled() %}
+    {% set settings = craft.drwAlert.settings() %}
+    {% if settings['turnOn'] == 'yes' and not craft.drwAlert.isAlertClosed() %}
+        <div class="l-alert js-alert">
+            <div class="l-container ">
+                <div  class="l-alert--container">
+                    <svg class="icon--warning l-alert--item">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg--icon-warning"></use>
+                    </svg>
+                    <div class="l-alert--item">
+                        {{  settings['message']|raw}}
+                    </div>
+                </div>
+            </div>
+        <span class="close">x</span>
+        </div>
+    {% endif %}
+{% endif %}

@@ -1,0 +1,278 @@
+//---------------------------------------------------------------
+//
+// Excerpt
+// Handles little pieces of content that are generally
+// image (optional), title, body, cta
+//
+//---------------------------------------------------------------
+
+.excerpt {
+  @include type-body;
+}
+
+.excerpt__thumbnail {
+  margin-bottom: rem(20px);
+
+  @include breakpoint(bp(large)) {
+    margin-bottom: rem(40px);
+  }
+}
+
+.excerpt__title {
+  @include type-excerpt-title;
+  color: color(dark-blue);
+
+  a {
+    color: color(dark-blue);
+    background-image: none;
+
+    &:hover {
+      @include nice-underline;
+    }
+  }
+}
+
+.excerpt__body {
+  margin-top: rem(4px);
+
+  p {
+    margin: 1em 0;
+  }
+}
+
+
+.excerpt__cta {
+  margin-top: rem(40px);
+}
+
+//---------------------------------------------------------------
+// Modifiers
+//---------------------------------------------------------------
+
+.excerpt--aside {
+  @include type-caption;
+
+  .excerpt__title {
+    margin-bottom: rem(10px);
+  }
+
+  .excerpt__body {
+    margin-top: 0;
+
+    .pill-list {
+      padding-left: 0;
+    }
+
+    ul, ol {
+      padding-left: 1em;
+
+      > li {
+        margin-bottom: 0.5em;
+      }
+
+      a {
+        color: color(manatee);
+      }
+    }
+  }
+
+  + .excerpt--aside {
+    margin-top: rem(40px);
+  }
+}
+
+.excerpt--4-up,
+.excerpt--3-up {
+  @include type-excerpt-body;
+
+  @include breakpoint(bp(large)) {
+    height: 320px;
+    padding-bottom: rem(40px);
+    position: relative;
+
+
+    .excerpt__cta {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+  }
+}
+
+.excerpt--3-up {
+  height: auto;
+  padding-bottom: 0;
+}
+
+.excerpt--cta {
+  @include type-caption;
+  padding-top: 30%;
+  padding-right: span(1 of 4);
+
+  .l-item-grid__item--full & {
+    padding-top: 0;
+    padding-right: 0;
+  }
+
+  .excerpt__cta {
+    margin-top: rem(20px);
+  }
+}
+
+.excerpt--section {
+  padding-bottom: rem(60px);
+  position: relative;
+
+  @include breakpoint(bp(large)) {
+    padding-left: rem(100px);
+    padding-bottom: rem(80px);
+  }
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+
+  .excerpt__title {
+    @include type-h3;
+  }
+
+  .excerpt__header {
+    margin-bottom: rem(30px);
+
+    @include breakpoint(bp(medium)) {
+      margin-bottom: rem(40px);
+    }
+  }
+
+  .excerpt__subtitle {
+    @include type-excerpt-title;
+    color: color(dark-blue);
+    line-height: 1.2;
+    margin-top: rem(5px);
+  }
+
+  .excerpt__body {
+    @include type-body;
+  }
+
+  .excerpt__cta {
+    margin-top: rem(30px);
+  }
+
+  .excerpt__thumbnail {
+    margin-bottom: rem(30px);
+
+    @include breakpoint(bp(large)) {
+      position: absolute;
+      left: 0;
+      top: 2%;
+    }
+  }
+}
+
+.excerpt--block {
+  padding-bottom: rem(60px);
+
+  @include breakpoint(bp(large)) {
+    padding-bottom: rem(80px);
+  }
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+
+  .excerpt__title {
+    @include type-h3;
+  }
+
+  .excerpt__title-campus {
+    @include type-mega-head;
+    padding-bottom: rem(60px);
+  }
+
+  .excerpt__title--small {
+    font-size: 1.75rem;
+  }
+
+  .excerpt__subtitle {
+    @include type-excerpt-title;
+    color: tint(color(dark-blue), 20);
+    line-height: 1.2;
+    margin-top: rem(7px);
+  }
+
+  .excerpt__intro {
+    @include type-lead;
+    margin-top: rem(20px);
+  }
+
+  .excerpt__body {
+    @include type-body;
+    margin-top: rem(24px);
+  }
+
+  .excerpt__body--top {
+    @include type-body;
+    margin-top: 0;
+  }
+
+
+  .excerpt__cta {
+    margin-top: rem(24);
+  }
+
+  .excerpt__links {
+    display: flex;
+
+  }
+}
+
+.excerpt--title {
+  .excerpt__title {
+    @include type-h3;
+  }
+
+  .excerpt__intro {
+    @include type-lead;
+    margin-top: rem(4px);
+  }
+}
+
+.excerpt--author {
+  .excerpt__thumbnail {
+    margin-bottom: 0;
+  }
+
+  .excerpt__title {
+    margin-bottom: 0;
+  }
+}
+
+.excerpt--recruiting {
+  @include type-caption;
+  margin-top: rem(60px);
+
+  .excerpt__cta {
+    margin-top: 1em;
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.excerpt--benefit-cta {
+  text-align: center;
+
+  .excerpt__cta {
+    margin-top: rem(20px);
+  }
+}

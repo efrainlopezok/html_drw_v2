@@ -1,0 +1,25 @@
+//---------------------------------------------------------------
+//
+// Icon text
+// For little icons next to text
+//
+//---------------------------------------------------------------
+
+.icon-text {
+  display: inline-block;
+}
+
+.icon-text__icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: .35em;
+}
+
+.icon-text__text {
+  display: inline-block;
+  vertical-align: middle;
+
+  .card:link & {
+    @include nice-underline;
+  }
+}

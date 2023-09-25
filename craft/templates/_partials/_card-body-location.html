@@ -1,0 +1,12 @@
+{% set locationTransform = {
+  mode: 'crop',
+  width: 400,
+  height: 400
+} %}
+{% set imgSrc = location.thumbnailImage | length ? location.thumbnailImage.first.getUrl(locationTransform) %}
+
+<div class="card-body u-bg u-bg--image" style="background-image: url({{ imgSrc }});">
+  <div class="card-body__address">
+    {% include '_partials/_address' %}
+  </div>
+</div>

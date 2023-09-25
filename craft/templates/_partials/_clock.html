@@ -1,0 +1,39 @@
+{% set locOptions = {
+  query : {
+    address: address.text
+  }
+} %}
+
+{% set loc = craft.placid.get('googleGeocode', locOptions) %}
+{% set latLong = loc.results[0].geometry.location | join(',') %}
+
+{% set timezoneOptions = {
+  query: {
+    location: latLong,
+    timestamp: "now" | date('U')
+  }
+} %}
+
+{% set timezoneResponse = craft.placid.get('googleTimezone', timezoneOptions) %}
+{% set timezoneId = timezoneResponse.timeZoneId %}
+
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="-26 89 100 100" style="enable-background:new -26 89 100 100;" xml:space="preserve" class="icon icon--clock js-clock" data-time="{{ 'now' | date('g:i:s', timezoneId) }}">
+<style type="text/css">
+  .st0{fill:#00D4C1;}
+  .st1{fill:#D3D8DD;}
+  .st2{fill:#233B56;}
+</style>
+<g id="minutes">
+  <path class="st1" d="M21,97h6v42h-6V97"/>
+</g>
+<g id="hours">
+  <path class="st1" d="M27,139h-6v-27h6V139"/>
+</g>
+<g id="seconds">
+  <path class="st0" d="M23,89h2v50h-2V89"/>
+</g>
+<g id="center">
+  <circle class="st2" cx="24" cy="139" r="5"/>
+</g>
+</svg>

@@ -1,0 +1,11 @@
+{% extends '_ajax' %}
+
+{% block content %}
+
+  {% if craft.request.isAjax %}
+    {% cache for 3 hours unless craft.config.devMode %}
+      {% include '_partials/_get-updates' %}
+    {% endcache %}
+  {% endif %}
+
+{% endblock %}

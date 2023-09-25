@@ -1,0 +1,4 @@
+{% header "Content-Type: application/json" %}
+{% set campuses = craft.calendar.calendars({ order: 'name'})  %}
+{{ campuses | makeJson | raw }}
+

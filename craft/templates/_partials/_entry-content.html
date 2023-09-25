@@ -1,0 +1,21 @@
+<article class="l-article">
+  <section class="l-article__main">
+    
+    {% if entry.pageIntro | length %}
+    <div class="lead">
+      {{ entry.pageIntro}}
+    </div>
+    {% endif %}
+    
+    {% for block in entry.bodyBlocks %}
+      {% include '_partials/_body-block-' ~ block.type %}
+    {% endfor %}
+  
+  </section>
+  <aside class="l-article__aside">
+    {% include ['_partials/_entry-aside-' ~ entry.type, '_partials/_entry-aside-default'] %}
+  </aside>
+
+</article>
+
+{% include '_partials/_entry-pagination' %}

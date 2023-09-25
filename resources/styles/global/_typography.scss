@@ -1,0 +1,197 @@
+//---------------------------------------------------------------
+//
+// Typography
+// Type variables and associated mixins
+//
+//---------------------------------------------------------------
+
+$secondary-font: "futura-pt", sans-serif;
+$primary-font: "proxima-nova", sans-serif;
+$headings: h1, h2, h3, h4, h5, h6;
+
+#{$headings} {
+  margin: 0;
+}
+
+//---------------------------------------------------------------
+// Sizes
+// Only size and line-height
+//---------------------------------------------------------------
+
+@mixin typesize-giga {
+  font-size: rem(32px);
+  line-height: 1;
+
+  @include breakpoint(bp(medium)) {
+    font-size: rem(52px);
+  }
+
+  @include breakpoint(bp(large)) {
+    font-size: rem(64px);
+  }
+
+  @include breakpoint( bp(xlarge) ) {
+    font-size: rem(82px);
+  }
+}
+
+@mixin typesize-mega {
+  font-size: rem(32px);
+  line-height: 1.2;
+
+  @include breakpoint(bp(medium)) {
+    font-size: rem(42px);
+  }
+
+  @include breakpoint( bp(large) ) {
+    font-size: rem(56px);
+  }
+}
+
+@mixin typesize-super {
+  font-size: rem(49px);
+  line-height: 1.2;
+}
+
+@mixin typesize-h1 {
+  font-size: rem(42px);
+}
+
+@mixin typesize-h2 {
+  font-size: rem(38px);
+}
+
+@mixin typesize-h3 {
+  font-size: rem(28px);
+  line-height: 1.3;
+
+  @include breakpoint(bp(medium)) {
+    font-size: rem(36px);
+  }
+}
+
+@mixin typesize-h4 {
+  font-size: rem(22px);
+  line-height: 1.4;
+
+  @include breakpoint( bp(large) ) {
+    font-size: rem(28px);
+  }
+}
+
+@mixin typesize-h5 {
+  font-size: rem(25px);
+  line-height: 1.3;
+}
+
+@mixin typesize-h6 {
+  font-size: rem(20px);
+  line-height: 1.4;
+
+  @include breakpoint( bp(large) ) {
+    font-size: rem(22px);
+  }
+}
+
+@mixin typesize-body {
+  font-size: rem(18px);
+}
+
+@mixin typesize-small {
+  font-size: rem(16px);
+}
+
+@mixin typesize-micro {
+  font-size: rem(16px);
+}
+
+@mixin typesize-milli {
+  font-size: rem(14px);
+}
+
+//---------------------------------------------------------------
+// Styles
+// Contains things like text-transform, letter-spacing, etc.
+//---------------------------------------------------------------
+
+@mixin type-giga-head {
+  @include typesize-giga;
+  font-family: $secondary-font;
+}
+
+@mixin type-mega-head {
+  @include typesize-mega;
+  font-family: $secondary-font;
+}
+
+@mixin type-h3 {
+  @include typesize-h3;
+  font-weight: 700;
+  font-family: $secondary-font;
+}
+
+@mixin type-caption {
+  @include typesize-milli;
+  line-height: 1.6;
+}
+
+@mixin type-lead {
+  @include typesize-h6;
+  line-height: 1.8;
+}
+
+@mixin type-blockquote {
+  @include typesize-h5;
+  font-weight: 700;
+  font-family: $secondary-font;
+  line-height: 1.3;
+}
+
+@mixin type-subhead {
+  @include typesize-h6;
+
+  font-family: $primary-font;
+  font-weight: 300;
+}
+
+@mixin type-body {
+  @include typesize-body;
+  font-weight: 400;
+  font-family: $primary-font;
+  line-height: 1.9;
+}
+
+
+@mixin type-excerpt-title {
+  @include typesize-body;
+  font-weight: 700;
+  font-family: $secondary-font;
+}
+
+@mixin type-update-title {
+  @include typesize-body;
+  font-weight: 500;
+  font-family: $primary-font;
+  line-height: 1.4;
+}
+
+@mixin type-excerpt-body {
+  @include typesize-small;
+  line-height: 1.6;
+}
+
+@mixin type-cap-heading() {
+  font-size: rem(11px);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-family: $secondary-font;
+}
+
+// SHAME, this is an OK place for this, but not ideal
+// TODO: move this into a better file
+.type-apply-title {
+  @include type-excerpt-title;
+  @include typesize-small;
+  margin-bottom: 0.5em;
+}

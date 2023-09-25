@@ -1,0 +1,14 @@
+{% set extraParams = { youtube_rel: 0, youtube_showinfo: 0 } %}
+{% set video = craft.embedder.url( block.embedUrl, { max_width: 950} ) %}
+
+<figure class="figure">
+  <div class="embedded-video">
+    {{ video.embed_code }}
+  </div>
+
+  {% if block.caption | length %}
+  <figcaption class="figure__caption">
+    {{ block.caption }}
+  </figcaption>
+  {% endif %}
+</figure>

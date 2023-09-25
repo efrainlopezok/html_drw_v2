@@ -1,0 +1,39 @@
+{% set newTab = false %}
+
+{% set isSocial = entry.type | kebab == 'twitter' or entry.type | kebab == 'instagram' %}
+
+<a href="{{ entry.url }}" class="card card--{{ entry.type | kebab }} {% if entry.pinUpdate is defined and entry.pinUpdate %} card--pinned {% endif %}" {% if isSocial %} target="_blank" {% endif %}>
+  <article>
+    <div class="card__header">
+      <aside class="card-meta card-meta--{{ entry.type | kebab }}">
+        <div class="card-meta__category">
+          <div class="icon-text">
+            {% if isSocial %}
+            <span class="icon-text__icon">
+              <svg class="icon icon--teal">
+                <use xlink:href="#svg--icon-{{ entry.type | kebab }}" />
+              </svg>
+            </span>
+            {% endif %}
+            <span class="icon-text__text">
+              {% if isSocial %}
+                {{ entry.type }}
+              {% else %}
+                {{ entry.type.name }}
+              {% endif %}
+            </span>
+          </div>
+        </div>
+        <div class="card-meta__date">
+          <time datetime="{{ entry.postDate | date('c') }}">{{ entry.postDate | date("M j") }}</time>
+        </div>
+      </aside>
+    </div>
+    <section class="card__body">
+      {% include [
+        '_partials/_card-body-' ~ entry.type | kebab, 
+        '_partials/_card-body-default.html'
+      ] %}
+    </section>
+  </article>
+</a>

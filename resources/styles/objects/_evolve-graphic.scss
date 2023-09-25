@@ -1,0 +1,153 @@
+//original css from illustrator export
+
+
+
+#evolve {
+
+  .cls-1, .cls-24 {
+    fill: none;
+  }
+
+  .cls-2 {
+    fill: #243b56;
+  }
+
+  .cls-3 {
+    fill: #faab1b;
+
+  }
+
+  .cls-4 {
+    fill: #f68c20;
+  }
+
+  .cls-5 {
+    fill: #0070a5;
+  }
+
+  #convex {
+    .cls-20 {
+      fill: #0070a5;
+    }
+  }
+
+  .cls-6 {
+    fill: #45bfb5;
+  }
+
+  .cls-7,.cls-21 {
+    fill: #9da0a5;
+  }
+
+  .cls-8 {
+    fill: #f68e20;
+  }
+
+  .cls-9 {
+    fill: #fff;
+    //opacity: 0.9;
+  }
+
+  .cls-10 {
+    clip-path: url(#clip-path);
+  }
+
+  .cls-11 {
+    fill: #233b57;
+  }
+
+  .cls-12 {
+    fill: #00d4c2;
+  }
+
+  .cls-13 {
+    fill: #f68e1e;
+  }
+
+  .cls-14 {
+    fill: #1c3b57;
+  }
+
+  .cls-15 {
+    fill: #fbab19;
+  }
+
+  .cls-16 {
+    fill: #231f20;
+  }
+
+  .cls-17 {
+    fill: #98b0bd;
+  }
+
+  .cls-18 {
+    clip-path: url(#clip-path-3);
+  }
+
+  .cls-19 {
+    fill: #22d3c5;
+  }
+
+  .cls-20 {
+    fill: #003764;
+  }
+
+  .cls-21 {
+    clip-path: url(#clip-path-5);
+  }
+
+  .cls-22 {
+    fill: #9aa6b7;
+  }
+
+  .cls-23 {
+    fill: #006ea4;
+  }
+
+  .cls-24 {
+    stroke: #faab1b;
+    stroke-miterlimit: 10;
+    stroke-width: 3px;
+  }
+
+  .cls-25 {
+    fill: #243b56;
+  }
+
+  circle {
+      &.vc {
+        stroke-miterlimit: 10;
+        stroke-width: 2.5px;
+        stroke: #243b56;
+      }
+  }
+  circle {
+    &.cumberland {
+        stroke-miterlimit: 10;
+        stroke-width: 2.5px;
+        stroke: #faab1b;
+      }
+  }
+  circle {
+      &.convexity {
+        stroke-miterlimit: 10;
+        stroke-width: 2.5px;
+        stroke: #0070a5;
+      }
+  }
+  circle {
+     &.vigilant {
+        stroke-miterlimit: 10;
+        stroke-width: 2.5px;
+        stroke: #243b56;
+      }
+  }
+  circle {
+      &.drw {
+        stroke-miterlimit: 10;
+        stroke-width: 2.5px;
+        stroke: #45bfb5;
+      }
+  }
+
+}

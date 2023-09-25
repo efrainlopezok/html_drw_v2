@@ -1,0 +1,19 @@
+//---------------------------------------------------------------
+//
+// Filter list
+// Controls spacing between title and list as well as between
+// lists and lists
+//
+//---------------------------------------------------------------
+
+.l-filter-list {
+  margin-bottom: rem(40px);
+}
+
+.l-filter-list__title {
+  @include type-excerpt-title;
+}
+
+.l-filter-list__list {
+  margin-top: rem(5px);
+}

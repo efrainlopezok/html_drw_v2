@@ -1,0 +1,11 @@
+{% import '_macros/_linkIt' as linkIt %}
+<li class="{{ base_class }}__item {% if not evenItems %} {{ base_class }}__item--full {% endif %}">
+  <article class="excerpt excerpt--cta">
+    <div class="excerpt__body">
+      <p>{{ siteGlobals.recruitingCallout }}</p>
+    </div>
+    <div class="excerpt__cta">
+      {{ linkIt.link(siteGlobals.recruitingCalloutButton, ['btn', 'btn--large']) }}
+    </div>
+  </article>
+</li>

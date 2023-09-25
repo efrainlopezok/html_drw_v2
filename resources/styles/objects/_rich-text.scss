@@ -1,0 +1,120 @@
+//---------------------------------------------------------------
+//
+// Rich Text
+// Less reset-y styles for WYSIWYG Output
+//
+//---------------------------------------------------------------
+
+$headings: h1, h2, h3, h4, h5, h6;
+
+.rich-text {
+  @include typesize-body;
+  line-height: 1.7;
+  color: shade(color(manatee), 20);
+
+  @include breakpoint(bp(medium)) {
+    line-height: 2.0;
+  }
+
+  //---------------------------------------------------------------
+  // Headings
+  //---------------------------------------------------------------
+
+  #{$headings} {
+    font-family: $secondary-font;
+    line-height: 1.2;
+    margin-top: 2em;
+    color: color(dark-blue);
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    p + & {
+      margin-top: rem(40px);
+    }
+
+    & + ul,
+    & + ol {
+      margin-top: 1rem;
+    }
+  }
+
+  @each $heading in $headings {
+    #{$heading} + p {
+      margin-top: 1rem;
+    }
+  }
+
+  // Can't loop over these :-(
+  h1 {
+    @include typesize-h1;
+  }
+
+  h2 {
+    @include typesize-h2;
+  }
+
+  h3 {
+    @include typesize-h3;
+  }
+
+  h4 {
+    @include typesize-h4;
+  }
+
+  h5 {
+    @include typesize-h5;
+  }
+
+  h6 {
+    @include typesize-h6;
+  }
+
+  //---------------------------------------------------------------
+  // Paragraphs
+  //---------------------------------------------------------------
+
+  p + p {
+    margin-top: 1rem;
+  }
+
+  * + p,
+  p + * {
+    margin-top: rem(40px);
+  }
+
+  //---------------------------------------------------------------
+  // Misc. Block elements
+  //---------------------------------------------------------------
+
+  pre {
+    font-size: rem(16px);
+    line-height: 1.5;
+    background-color: color(light-gray);
+    padding: 1em;
+    border-radius: 3px;
+  }
+  code {
+    line-height: 1.5;
+    background-color: color(light-gray);
+    padding: .3em;
+    border-radius: 3px;
+  }
+  .inline-code {
+    font-size: rem(16px);
+    line-height: 1.5;
+    background-color: color(light-gray);
+    padding: .3em;
+    border-radius: 3px;
+    font-family: monospace, monospace;
+  }
+}
+
+.figure + .rich-text {
+  margin-top: rem(40px);
+}
+
+.body-cta + .rich-text {
+  margin-top: rem(60px);
+}

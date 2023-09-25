@@ -1,0 +1,11 @@
+<section class="l-section l-section--contentGrid">
+  <div class="l-container">
+    <div class="l-item-grid l-item-grid--3-up">
+    {% for entry in block.entries %}
+      <div class="l-item-grid__item">
+        {% include '_partials/_card-update' %}
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+</section>

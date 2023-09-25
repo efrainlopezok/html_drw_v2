@@ -1,0 +1,38 @@
+//---------------------------------------------------------------
+//
+// Inline list for meta items
+//
+//---------------------------------------------------------------
+
+.meta-list {
+  @include block-list;
+  @include type-caption;
+  color: color(manatee);
+ 
+  > li {
+    border-bottom: 1px solid color(iron);
+    padding: .25em;
+    
+    @include breakpoint(bp(medium)) {
+      width: 45%;
+      vertical-align: baseline;
+      display: inline-block;
+      margin-right: .5em;
+      border-bottom: 0;
+    }
+
+    @include breakpoint(bp(xlarge)) {
+      width: auto;
+    }
+  }
+}
+
+.meta-list__head {
+  width: 50%;
+  display: inline-block;
+  opacity: 0.6;
+
+  @include breakpoint(bp(medium)) {
+    width: auto;
+  }
+}

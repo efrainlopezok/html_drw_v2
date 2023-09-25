@@ -1,0 +1,16 @@
+//---------------------------------------------------------------
+//
+// Figure
+// Basic figure object
+//
+//---------------------------------------------------------------
+
+.figure {
+  margin-top: rem(40px);
+}
+
+.figure__caption {
+  @include type-caption;
+  margin-top: rem(10px);
+  color: color(manatee);
+}

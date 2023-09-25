@@ -1,0 +1,22 @@
+{% set entry = entry.featuredUpdate | length ? entry.featuredUpdate.first : false %}
+{% if entry %}
+
+  {% set headerSize = {
+    mode: 'crop',
+    quality: 90,
+    width: 1280,
+    height: 600
+  } %}
+  {% set backgroundImageSrc = entry.headerImage and entry.headerImage | length ? entry.headerImage.first.getUrl(headerSize) : '' %}
+
+  <div class="l-page-header l-page-header--small u-bg u-bg--image u-overlay u-overlay--dark-blue" style="background-image: url({{ backgroundImageSrc }});">
+    <div class="l-page-header__inner">
+      <div class="l-container">
+        <div class="heading-group heading-group--feature">
+          <span class="type-tag u-bg--dark-blue">{{ entry.type.name }}</span>
+          <h1 class="heading-group__title"><a href="{{ entry.url }}">{{ entry.title }}</a></h1>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}

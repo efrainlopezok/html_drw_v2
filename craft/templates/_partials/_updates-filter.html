@@ -1,0 +1,50 @@
+{# start off with social stuff and types #}
+
+{% set entryIds = craft.entries.section('updates').ids() %}
+{% set categories = craft.categories.relatedTo({ sourceElement: entryIds }).groupId(1).find() %}
+{% set filters = [] %}
+
+{% if socialMedia.twitterUsername | length %}
+  {% set filters = filters | merge([{ type: 'type', name: 'Twitter', slug: 'twitter' }]) %}
+{% endif %}
+
+{% if socialMedia.instagramUsername | length %}
+  {% set filters = filters | merge([{ type: 'type', name: 'Instagram', slug: 'instagram' }]) %}
+{% endif %}
+
+
+{% set section = craft.sections.getSectionByHandle('updates') %}
+{% set types = section.getEntryTypes() %}
+{% for type in types %}
+  {% if craft.entries.type(type).total() > 0 %}
+    {% set type = {
+      type: 'type',
+      name: type.name,
+      slug: type.handle
+    } %}
+    {% set filters = filters | merge([type]) %}
+  {% endif %}
+{% endfor %}
+
+{% for category in categories %}  
+  {% set category = {
+    type: 'category',
+    name: category.title,
+    slug: category.slug
+  } %}
+  {% set filters = filters | merge([category]) %}
+{% endfor %}
+
+<div class="updates-filter js-filter">
+  <a href="#" class="updates-filter__btn js-filter__trigger">Browse by Category</a>
+
+  <div class="updates-filter__list">
+    <ul class="filter-list js-filter__list">
+      <li data-filter-value="all">All</li>
+      {% for item in filters | sort %}
+        <li data-filter-type="{{ item.type }}" data-filter-value="{{ item.slug }}">{{ item.name }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+</div>

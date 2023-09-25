@@ -1,0 +1,32 @@
+.img {
+  position: relative;
+}
+
+.img > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.img--square {
+  padding-top: 84%;
+}
+
+.img--75 {
+  padding-top: 75%;
+}
+
+.img--40 {
+  padding-top: 36%;
+}
+
+.img__caption {
+  @include type-caption;
+  line-height: 1.4;
+  padding: rem(15px 25px);
+  background-color: color(reverse);
+  color: color(manatee);
+}

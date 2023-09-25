@@ -1,0 +1,8 @@
+{% extends "_layout" %}
+
+{% block content %}
+{% cache unless craft.config.devMode %}
+  {% include ['_partials/_entry-header-' ~ entry.type, '_partials/_entry-header'] %}
+  {% include ['_partials/_entry-content-' ~ entry.type, '_partials/_entry-content' ] %}
+{% endcache %}
+{% endblock %}

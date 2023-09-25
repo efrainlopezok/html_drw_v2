@@ -1,0 +1,31 @@
+//---------------------------------------------------------------
+//
+// Lists have some tweaked styles
+//
+//---------------------------------------------------------------
+
+.list {
+  margin-left: 0;
+  padding-left: 0;
+  list-style: none;
+  color: color(dark-blue);
+
+  > li {
+    margin-bottom: 1em;
+    padding-left: 1.125em;
+    position: relative;
+
+    &:before {
+      content: '';
+      display: inline-block;
+      vertical-align: middle;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: color(dark-blue);
+      position: absolute;
+      left: 0;
+      top: .55em;
+    }
+  }
+}

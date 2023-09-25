@@ -1,0 +1,106 @@
+//---------------------------------------------------------------
+//
+// Layout: Article
+// Layout for main article content
+//
+//---------------------------------------------------------------
+
+.l-article {
+  @include content-container;
+}
+
+.l-article__main,
+.l-article__aside {
+  padding: rem(60 0);
+
+  @include breakpoint(bp(large)) {
+    padding: 6% 0;
+  }
+}
+
+.l-article__main {
+  @include breakpoint(bp(large)) {
+    @include span(8 of 12 at 1);
+  }
+
+  @include breakpoint(bp(xlarge)) {
+    @include span(9 of 12 at 1);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.l-article__aside {
+  border-top: 1px solid color(iron);
+
+  @include breakpoint(bp(large)) {
+    border-top: 0;
+    @include span(3 of 12 at 10);
+  }
+  
+  @include breakpoint(bp(xlarge)) {
+    @include span(2 of 12 at 11);
+  }
+}
+
+//---------------------------------------------------------------
+// Modifiers
+//---------------------------------------------------------------
+
+.l-article--bg {
+  @include breakpoint(bp(large)) {
+    position: relative;
+  }
+
+  .l-article__aside {
+    background-color: darken( color(light-gray), 4);
+    position: relative;
+    border-top: 0;
+
+    &:after {
+      content: '';
+      background-color: inherit;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: -50%;
+      left: -50%;
+      z-index: -1;
+    }
+
+    @include breakpoint(bp(large)) {
+      position: static;
+      padding-left: rem(36px);
+      background-color: darken( color(light-gray), 8);
+
+      &:after {
+        right: -400px;
+        left: span(9) - 2%; // [1]
+      }
+    }
+    
+    @include breakpoint(bp(xlarge)) {
+
+      &:after {
+        right: -400px;
+        left: span(10) - 1%; // [1]
+      }
+    }
+  }
+}
+
+.l-article--flipped {
+  .l-article__main {
+    @include span(9 of 12 at 4);
+  }
+
+  .l-article__aside {
+    @include span(2 of 12 at 1);
+  }
+}
+
+// [1] Magic number in order to properly align the background :after element
+//     with the right hand column above. This is mostly because the gutter()
+//     function didn't seem to be working properly.

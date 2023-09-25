@@ -1,0 +1,14 @@
+//---------------------------------------------------------------
+//
+// Antialiased Type Mixins
+// Turns on or off antialiasing.
+//
+//---------------------------------------------------------------
+
+@mixin aa-type {
+  -webkit-font-smoothing: antialiased;
+}
+
+@mixin aa-type-normal {
+  -webkit-font-smoothing: subpixel-antialiased;
+}

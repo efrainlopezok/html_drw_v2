@@ -1,0 +1,20 @@
+//---------------------------------------------------------------
+//
+// Type Tag
+// Shows the entry type atop the header in a post. Pretty similar
+// to a large button, but with out hover states, and with color
+// variations.
+//
+//---------------------------------------------------------------
+
+.type-tag {
+  @include type-cap-heading;
+  display: inline-block;
+  border-radius: 3px;
+  padding: 1em 1.25em;
+  margin-bottom: rem(25px);
+}
+
+.u-overlay--dark-blue .type-tag {
+  background-color: rgba(255, 255, 255, 0.2);
+}

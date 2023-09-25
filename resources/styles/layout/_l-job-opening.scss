@@ -1,0 +1,128 @@
+//==============================================================================
+// Job Opening Layout
+// Used on the campus interior pages
+//==============================================================================
+
+$layout: layout(auto 12 1);
+
+// -----------------------------------------------------------------------------
+// Base
+// -----------------------------------------------------------------------------
+
+.l-job-opening {
+  @include container;
+
+  & + & {
+    margin-top: rem(60);
+
+    @include breakpoint(bp(medium)) {
+      margin-top: rem(120);
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Elements
+// -----------------------------------------------------------------------------
+
+.l-job-opening__thumbnail {
+  position: relative;
+  @include breakpoint(bp(large)) {
+    @include span(3 at 1 of $layout);
+  }
+
+
+}
+
+.l-job-opening__body {
+  margin-top: rem(20);
+  padding: 0;
+  color: #747e88;
+  @include breakpoint(bp(large)) {
+    @include span(8 at 5 of $layout);
+    margin-top: 0;
+    padding: 0 30px;
+  }
+}
+
+.l-job-opening__aside {
+  margin-top: rem(30);
+
+  @include breakpoint(bp(large)) {
+    @include span(2 at 10 of $layout);
+    margin-top: 0;
+  }
+}
+
+.l-job-opening__body--description {
+  font-weight: bold;
+}
+
+.l-job-company {
+  @include container;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: rem(60);
+    margin-top: rem(60);
+
+
+    @include breakpoint(bp(medium)) {
+      margin-top: rem(120);
+      margin-bottom: rem(120);
+
+    }
+  &:first-child {
+    margin-top: 0;
+  }
+
+
+
+
+}
+
+
+.l-job-company__thumbnail{
+  padding-top: 0;
+  max-width: 70%;
+  position: relative;
+
+  @include breakpoint(bp(large)) {
+    max-width: inherit;
+    @include span(3 at 1 of $layout);
+    padding-top: 0.6em;
+
+  }
+
+  &:before {
+    display: none;
+    @include breakpoint(bp(large)){
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: -45%;
+      width: 2px;
+      background-color: color(blue-gray);
+      content: ' ';
+    }
+  }
+  &:after {
+    display: none;
+    @include breakpoint(bp(large)){
+      display: block;
+      position: absolute;
+      top: 50%;
+      bottom: 0;
+      right: -45%;
+      transform: translate(24px,-50%);
+      height: 15px;
+      border-bottom: 8px solid transparent;
+      border-top: 8px solid transparent;
+      border-right: 12px solid transparent;
+      border-left: 12px solid color(blue-gray);
+      content: ' ';
+    }
+  }
+
+}

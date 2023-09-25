@@ -1,0 +1,12 @@
+//---------------------------------------------------------------
+//
+// Share module
+//
+//---------------------------------------------------------------
+
+.share-links__title {
+  @include type-caption;
+  color: color(manatee);
+  font-weight: 400; 
+  margin-bottom: rem(5px);
+}

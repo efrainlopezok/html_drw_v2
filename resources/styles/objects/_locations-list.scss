@@ -1,0 +1,33 @@
+//---------------------------------------------------------------
+//
+// Locations List
+// A list of locations located in the footer
+//
+//---------------------------------------------------------------
+
+.locations-list {
+  @include block-list;
+  font-size: rem(12px);
+  margin-right: rem(10px);
+  color: rgba(255, 255, 255, 0.2);
+  font-family: $secondary-font;
+  text-transform: uppercase;
+
+  @include breakpoint(bp(large)) {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  > li {
+    display: inline-block;
+    
+    &:after {
+      content: "\2014";
+      margin: 0 .25em;
+    }
+
+    &:last-child:after {
+      content: "";
+    }
+  }
+}

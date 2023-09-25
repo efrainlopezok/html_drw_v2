@@ -1,0 +1,25 @@
+{% set openPositions = craft.drw.getNumberOfJobs() %}
+{% set categories = craft.drw.getCategories() %}
+{% set ctaText = siteGlobals.openPositionsCalloutCta | length ? siteGlobals.openPositionsCalloutCta : 'See all Jobs' %}
+
+<article class="excerpt excerpt--recruiting">
+  {% if siteGlobals.positionsCalloutTitle | length %}
+    <h3 class="excerpt__title">{{ siteGlobals.positionsCalloutTitle }}</h3>
+  {% endif %}
+  <div class="excerpt__body">
+    {{ siteGlobals.openPositionsCallout }}
+    <ul class="pill-list">
+      {% for category in categories %}
+        <li>
+          <a href="{{ url('careers/listings', {categories: category.value} ) }}">
+            <span class="pill-list__text">{{ category.value }}</span>
+            <span class="pill pill--small">{{ craft.drw.getJobCountByCategory(category.value) }}</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="excerpt__cta">
+    <a href="{{ url('careers/listings') }}" class="btn">{{ ctaText }} — {{ openPositions }}</a>
+  </div>
+</article>

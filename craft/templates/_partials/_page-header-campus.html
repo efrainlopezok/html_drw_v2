@@ -1,0 +1,61 @@
+{% set headerSize = {
+  mode: 'crop',
+  position: entry.cropAnchor | length ? entry.cropAnchor | kebab : 'top-left',
+  width: 1280,
+  height: 600
+} %}
+{% set backgroundImageSrc = entry.headerBackground | length ? entry.headerBackground.first.getUrl() : false %}
+{% set title = entry.headerTitle | length ? entry.headerTitle : entry.title %}
+{% set videoCta = entry.headerCta.url matches '/vimeo|youtube|youtu\.be/' %}
+
+{% if backgroundImageSrc %}
+  <div class="l-page-header l-page-header--campus l-page-header--interactive u-bg u-bg--image  {% if videoCta %}js-video-head{% endif %}" style="background-image: url({{ backgroundImageSrc }});">
+        <div class="l-page-header__svg">
+            {% if entry.imageTemplate | length %}
+
+                {% include entry.imageTemplate with { 'videoCta' : videoCta, 'videourl' : entry.headerCta.url } %}
+
+            {% endif %}
+        </div>
+      <div class="l-page-header__inner">
+          <div class="l-container">
+            <div class="heading-group heading-group--campus ">
+              <h1 class="heading-group__title {% if entry.url == siteUrl %} js-fancy-heading {% endif %}">{{ title }}</h1>
+              {% if entry.headerSubtitle | length %}
+                <h2 class="heading-group__subtitle">{{ entry.headerSubtitle }}</h2>
+              {% endif %}
+
+              {% if entry.headerCta | length %}
+                <div class="heading-group__btn">
+                  {% if videoCta %}
+                    <a href="{{ entry.headerCta.url }}" id="playVideo" class="text-btn text-btn--reverse text-btn--play">
+                      <svg class="icon icon--play icon--inline" >
+                        <use xlink:href="#svg--icon-play" />
+                      </svg>
+                      {{ entry.headerCta.text }}
+                    </a>
+                  {% else %}
+                    <a href="{{ entry.headerCta.url }}" class="text-btn text-btn--reverse">
+                      {{ entry.headerCta.text }}
+                    </a>
+                  {% endif %}
+                </div>
+              {% endif %}
+            </div>
+        </div>
+    </div>
+  </div>
+{% else %}
+  <div class="l-page-header l-page-header--small">
+    <div class="l-page-header__inner">
+      <div class="l-container">
+        <div class="heading-group heading-group--feature">
+          <h1 class="heading-group__title">{{ title }}</h1>
+          {% if entry.headerSubtitle | length %}
+            <h2 class="heading-group__subtitle">{{ entry.headerSubtitle }}</h2>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}

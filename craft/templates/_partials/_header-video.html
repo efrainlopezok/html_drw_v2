@@ -1,0 +1,17 @@
+{% for block in entry.headerVideo %}
+      
+  {% if block.type == 'uploadedVideo' %}
+  <div class="l-page-header__video">
+    <video autoplay="1" loop="1" poster="{{ backgroundImageSrc }}" >
+    {% for format in ['mp4', 'webm', 'ogv'] %}
+      {% for video in block.videoUploads %}
+        {% if video.extension == format %}
+          <source src="{{ video.url }}" type="{{ video.mimeType }}" />
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+    </video>
+  </div>
+  {% endif %}
+
+{% endfor %}

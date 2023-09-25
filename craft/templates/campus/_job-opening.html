@@ -1,0 +1,52 @@
+
+
+<div class="l-job-opening">
+  <div class="l-job-opening__thumbnail">
+      <div class="excerpt excerpt--block">
+          <div class="excerpt__header">
+              <h3 class="excerpt__title excerpt__title--small ">
+                  {{ block.jobTitle }}
+
+                  {% if block.jobNickname | length %}
+                      | {{ block.jobNickname }}
+                  {% endif %}
+              </h3>
+          </div>
+      </div>
+  </div>
+  <div class="l-job-opening__body">
+    <div class="excerpt excerpt--block">
+      <div class="excerpt__body--top">
+        <div class="rich-text">
+          {{ block.jobDescription }}
+        </div>
+      </div>
+
+      {% if block.applicationCtas | length %}
+        <div class="excerpt__cta">
+          {% if block.applyTitle | length %}
+            <h4 class="type-apply-title">{{ block.applyTitle }}</h4>
+          {% endif %}
+            <div class="excerpt__links">
+                {% for row in block.applicationCtas %}
+                    <a href="{{ row.applicationUrl }}" class="btn--round btn--titled" rel="noopener noreferrer" target="_blank">
+                        <div class="btn__abbreviation">
+                                                    {% if row.location | length %}
+                                                    {{ row.location.first.locationAbbreviation }}
+                                                    {% endif %}
+
+                        </div>
+
+                    </a>
+                {% endfor %}
+            </div>
+
+        </div>
+      {% elseif block['applicationLink'] | default('') | length %}
+        <div class="excerpt__cta">
+          {{ linkIt.link(block.applicationLink, 'btn btn--large') }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

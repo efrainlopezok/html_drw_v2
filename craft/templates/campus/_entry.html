@@ -1,0 +1,18 @@
+{#
+ # On Campus template
+ # ---------------
+ #}
+
+{% set calendarPlugin = craft.plugins.getPlugin('calendar', false) %}
+
+{% extends "_campus" %}
+
+{% block content %}
+{#  {% cache unless craft.config.devMode %}#}
+    {% if entry.parent | length %}
+      {% include ['campus/_entry-child', 'campus/_entry-default'] %}
+    {% else %}
+      {% include ['campus/_entry-' ~ entry.type, 'campus/_entry-default'] %}
+    {% endif %}
+{#  {% endcache %}#}
+{% endblock %}

@@ -1,0 +1,24 @@
+{% set url = 'https://boards.greenhouse.io/drw/jobs/' ~ job.id %}
+{% set categories = [] %}
+{% set locations = [] %}
+{% for category in job.categories %}
+  {% set categories = categories | merge([category.formattedValue]) %}
+{% endfor %}
+{% for location in job.locations %}
+  {% set locations = locations | merge([location.value]) %}
+{% endfor %}
+
+<article class="l-career-listing">
+  <header class="l-career-listing__header">
+    <h1 class="listing-title"><a href="{{ url }}"  target="_blank">{{ job.title }}</a></h1>
+  </header>
+  <aside class="l-career-listing__meta">
+    <ul class="meta-list">
+      <li><span class="meta-list__head">ID:</span> {{ job.jobid }}</li>
+      <li><span class="meta-list__head">Location:</span> {{ locations | join(', ') }}</li>
+      <li><span class="meta-list__head">Department:</span> {{ categories | join(', ') }}</li>
+      <li><span class="meta-list__head">Targeted Start Date:</span> {{ job.startDate }}</li>
+      <li><span class="meta-list__head">Type:</span> {{ job.type }}</li>
+    </ul>
+  </aside>
+</article>

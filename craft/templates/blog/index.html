@@ -1,0 +1,20 @@
+{% if craft.request.isAjax %}
+{% set layout = "_ajax" %}
+{% else %}
+{% set layout = "_layout" %}
+{% endif %}
+
+
+{% extends layout %}
+{% set title = 'Blog' %}
+{% block content %}
+
+{% cache for 3 hours unless craft.config.devMode %}
+{% if craft.request.isAjax %}
+{% include '_partials/_get-updates' %}
+{% else %}
+    {% include ['_partials/_page-content-blog', '_partials/_page-content' ] %}
+{% endif %}
+
+{% endcache %}
+{% endblock %}

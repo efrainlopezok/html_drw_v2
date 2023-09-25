@@ -1,0 +1,19 @@
+{% extends '_ajax' %}
+
+{% block content %}
+  
+  {% if craft.request.isAjax %}
+    {% cache for 3 hours unless craft.config.devMode %}
+      {# TODO: Add in query setup from _entry.html #}
+      {% set jobs = craft.drw.getJobs() %}
+      {% set itemsPerPage = 10 %}
+      {% set start = pagenumber is defined ? (pagenumber * itemsPerPage) : 0 %}
+
+      {% for job in jobs | slice(start, itemsPerPage) %}
+        {% include 'career-listings/_single-listing' %}
+      {% endfor %}
+
+    {% endcache %}
+  {% endif %}
+
+{% endblock %}

@@ -1,0 +1,25 @@
+//---------------------------------------------------------------
+//
+// Ghost Button
+// All stroke no fill
+//
+//---------------------------------------------------------------
+
+.ghost-btn {
+  @include no-underline;
+  @include type-cap-heading;
+  display: inline-block;
+  padding: 1.25em 1.5em;
+  border-radius: 3px;
+  transition-property: background-color, color, border;
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition-duration: .25s;
+  border: 2px solid currentColor;
+
+  &:hover {
+    background-color: color(dark-blue);
+    color: color(reverse);
+    background-image: none;
+    border-color: color(dark-blue);
+  }
+}

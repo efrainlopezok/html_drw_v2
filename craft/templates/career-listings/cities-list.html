@@ -1,0 +1,22 @@
+{% extends '_ajax' %}
+
+{% block content %}
+  
+  {% if craft.request.isAjax %}
+    {% cache for 3 hours unless craft.config.devMode %}
+
+      {% set cities = craft.drw.getCityNames() %}
+      
+      <div class="js-filter">
+        <ul class="filter-list js-filter__list">
+          <li class="is-active" data-filter-value="all">All</li>
+          {% for city in cities %}
+            <li data-filter-type="locations" data-filter-value="{{ city | kebab }}">{{ city }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    
+    {% endcache %}  
+  {% endif %}
+
+{% endblock %}

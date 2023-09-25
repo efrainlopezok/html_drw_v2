@@ -1,0 +1,39 @@
+{# todo: move this to a global #}
+{% set twitterUsername = "drwtradinggroup" %}
+{% set facebookAppId = "1576989222561837" %}
+
+<div class="share-links">
+  <h3 class="share-links__title">Share this:</h3>
+  <ul class="social-icons social-icons--share">
+    <li>
+      <a href="mailto:">
+        <svg class="icon icon--med icon--manatee">
+          <use xlink:href="#svg--icon-email" />
+        </svg>
+      </a>
+    </li>
+    <li>
+      <a href="https://twitter.com/intent/tweet?url={{ entry.url | url_encode}}&via={{ twitterUsername | url_encode }}" class="js-popup--twitter">
+        <svg class="icon icon--med icon--manatee">
+          <use xlink:href="#svg--icon-twitter" />
+        </svg>
+      </a>
+    </li>
+    <li>
+      <a href="#" data-href="{{ entry.url }}" class="js-popup--facebook">
+        <svg class="icon icon--med icon--manatee">
+          <use xlink:href="#svg--icon-facebook" />
+        </svg>
+      </a>
+    </li>
+    <li>
+      <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ entry.url }}&title={{ entry.title }}&source=DRW Trading Group" class="js-popup--linkedin">
+        <svg class="icon icon--med icon--manatee">
+          <use xlink:href="#svg--icon-linkedin" />
+        </svg>
+      </a>
+    </li>
+  </ul>
+</div>
+
+{% include '_partials/_share-snippets' %}

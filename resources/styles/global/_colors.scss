@@ -1,0 +1,44 @@
+//---------------------------------------------------------------
+//
+// Colors
+// Color map and associated functions
+//
+//---------------------------------------------------------------
+
+// I'm not good at naming colors, so I'm letting a little application called
+// sip give me color names
+$colors: (
+  dark-blue: #233b56,
+  bright-teal: #00d4c1,
+  light-teal: #d1f3ed,
+  medium-blue: #00abb5,
+  blue-gray: #a1acb7,
+  light-gray: #f2f3f5,
+  dark-blue-gray: #4e6277,
+  rock-blue: #99a5b8,
+  neptune: #80bcbc,
+  reverse: #fff,
+  humming-bird: #cef6f3,
+  manatee: #919daa,
+  twitter-blue: #32abde,
+  iron: #d7d8da,
+  pale-turquoise: #b1efea,
+  error-red: #c13636,
+  mercury: #E3E4E6,
+  cumberland: #F68C25,
+  cumberland-light: #FAAB1B
+);
+
+// Add percentage of white to a color
+@function tint($color, $percent) {
+  @return mix(#fff, $color, $percent);
+}
+
+// Add percentage of black to a color
+@function shade($color, $percent) {
+  @return mix(#000, $color, $percent);
+}
+
+@function color($key) {
+  @return map-get($colors, $key);
+}

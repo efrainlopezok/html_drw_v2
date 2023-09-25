@@ -1,0 +1,70 @@
+{# Prepare our error macro #}
+{% macro errorList(errors) %}
+  {# To display errors, you want to make sure errors exist,
+       and then you can loop through and display them #}
+  {% if errors %}
+    <ul class="field-errors">
+      {% for error in errors %}
+        <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endmacro %}
+
+{% macro input(name, value, type) %}
+  <input type="{{ type | default('text') }}" name="{{ name }}" value="{{ value }}"/>
+{% endmacro %}
+
+{% macro select(name, value, options) %}
+  <select name="{{ name }}" value="{{ value }}">
+    <option value="">Select Event ...</option>
+    {% for option in options %}
+      <option value="{{ option.value }}">{{ option.text }}</option>
+    {% endfor %}
+  </select>
+{% endmacro %}
+
+{% macro selectField(sproutField, value, options) %}
+  {% import _self as form %}
+  {% set hasErrors = submittedEntry is defined and submittedEntry.getErrors(sproutField.handle) | length %}
+
+  <div class="form-field form-field--{{ sproutField.handle }} {% if hasErrors %}has-errors{% endif %}" id="fields-{{ sproutField.handle }}-field">
+    <label class="form-field__label" for="fields-{{ sproutField.handle }}">
+      {{ sproutField.name }}
+    </label>
+    <div class="form-field__input">
+      {{ form.select('fields[' ~ sproutField.handle ~ ']', value, options) }}
+    </div>
+
+    {% if hasErrors %}
+    <div class="form-field__errors">
+      {{ form.errorList(submittedEntry.getErrors(sproutField.handle)) }}
+    </div>
+    {% endif %}
+  </div>
+{% endmacro %}
+
+{% macro textField(sproutField, submittedEntry) %}
+  {% import _self as form %}
+
+  {% set hasErrors = submittedEntry is defined and submittedEntry.getErrors(sproutField.handle) | length %}
+
+  <div class="form-field form-field--{{ sproutField.handle }} {% if hasErrors %}has-errors{% endif %}" id="fields-{{ sproutField.handle }}-field">
+    <label class="form-field__label" for="fields-{{ sproutField.handle }}">
+      {{ sproutField.name }} {% if not(sproutField.required) %}(optional){% endif %}
+    </label>
+    <div class="form-field__input">
+      {% if sproutField.settings['multiline'] %}
+        <textarea name="fields[{{ sproutField.handle }}]" value="{{ attribute(submittedEntry, sproutField.handle) }}" rows="{{ sproutField.settings['initialRows'] }}"></textarea>
+      {% else %}
+        {{ form.input('fields[' ~ sproutField.handle ~ ']', attribute(submittedEntry, sproutField.handle)) }}
+      {% endif %}
+    </div>
+
+    {% if hasErrors %}
+    <div class="form-field__errors">
+      {{ form.errorList(submittedEntry.getErrors(sproutField.handle)) }}
+    </div>
+    {% endif %}
+  </div>
+{% endmacro %}

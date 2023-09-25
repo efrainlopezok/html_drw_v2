@@ -1,0 +1,28 @@
+//---------------------------------------------------------------
+//
+// Author Meta
+// Object for managing an author avatar + name
+//
+//---------------------------------------------------------------
+
+.author-meta {
+  @include container;
+  margin-top: rem(15px);
+  @include aa-type;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.author-meta__avatar {
+  position: relative;
+  top: 1px;
+  margin-right: 2%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.author-meta__name {
+  @include typesize-micro;
+  display: inline-block;
+  width: 80%;
+  vertical-align: middle;
+}

@@ -1,0 +1,21 @@
+{% set title = entry.headerTitle | length ? entry.headerTitle : entry.title %}
+{% set eventEntry = craft.calendar.event(eventId) %}
+
+<div class="l-page-header l-page-header--simple">
+  <div class="l-page-header__inner">
+    <div class="l-container">
+      <div class="heading-group heading-group--simple">
+        <h1 class="heading-group__title">{{ title }}</h1>
+
+        {% if eventEntry | length %}
+          <h2 class="heading-group__event-subtitle">
+            {{ eventEntry.title }}
+          </h2>
+          <h2 class="heading-group__event-info">
+            {{ eventEntry.startDate | date('M j, Y') }} @ {{ eventEntry.calendar.name }}
+          </h2>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

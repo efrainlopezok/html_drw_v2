@@ -1,0 +1,106 @@
+//---------------------------------------------------------------
+//
+// Heading Group
+// Manages groups of headings & subheads
+//
+//---------------------------------------------------------------
+
+.heading-group {
+  @include breakpoint(bp(large)) {
+    @include span(11 of 12 at 1);
+  }
+
+  @include breakpoint( bp(xlarge) ) {
+    @include span(9 of 12 at 1);
+  }
+}
+
+.heading-group-campus {
+
+  @include breakpoint(bp(medium)) {
+    width: 50%;
+    float: right;
+    margin-right: 0;
+    margin-left: -100%;
+  }
+
+  //@include breakpoint( bp(xlarge) ) {
+  //  width: 50%;
+  //  float: right;
+  //  margin-right: 0;
+  //  margin-left: -100%;
+  //}
+}
+
+.heading-group__title {
+  @include type-giga-head;
+
+  a {
+    @include nice-underline;
+    color: inherit;
+  }
+}
+
+.heading-group__subtitle {
+  @include type-subhead;
+  margin-top: 1em;
+  color: color(reverse);
+
+  @include breakpoint(bp(large)) {
+    max-width: 650px;
+  }
+}
+
+.heading-group__event-subtitle {
+  @include type-subhead;
+  font-weight: bold;
+  margin-top: 2em;
+  color: color(reverse);
+}
+
+.heading-group__event-info {
+  @include type-subhead;
+}
+
+.heading-group__btn {
+  margin-top: rem(30px);
+}
+
+
+.heading-group--feature {
+  .heading-group__title {
+    @include type-mega-head;
+  }
+}
+
+.heading-group--dark {
+  .heading-group__subtitle {
+    color: color(manatee);
+  }
+}
+
+.heading-group--navy {
+  .heading-group__title,
+  .heading-group__subtitle {
+    color: color(dark-blue);
+  }
+}
+
+.heading-group--simple {
+  width: 100%;
+  text-align: center;
+
+  .heading-group__subtitle {
+    max-width: none;
+  }
+}
+
+.l-page-header--interactive{
+  .heading-group--campus {
+    display: block;
+    @include breakpoint(bp(medium)) {
+      display: none;
+    }
+  }
+}
+

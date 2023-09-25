@@ -1,0 +1,30 @@
+{% if craft.request.isAjax %}
+  {% set layout = "_ajax" %}
+{% else %}
+  {% set layout = "_layout" %}
+{% endif %}
+
+
+{% extends layout %}
+{% set title = 'Updates' %}
+{% block content %}
+
+{% cache for 3 hours unless craft.config.devMode %}
+  {% if craft.request.isAjax %}
+    {% include '_partials/_get-updates' %}
+  {% else %}
+    {% set entry = craft.entries.slug('updates').featuredUpdate %}
+
+    <section class="l-section u-bg--light-gray">
+      <div class="l-container">
+        {% include '_partials/_updates-filter' %}
+        {% include '_partials/_grid-cards' %}
+        <div class="l-section__cta">
+          <a href="#" class="btn btn--large" id="load-more">Load More</a>
+        </div>
+      </div>
+    </section>
+  {% endif %}
+
+{% endcache %}
+{% endblock %}

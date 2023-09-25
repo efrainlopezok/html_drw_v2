@@ -1,0 +1,66 @@
+//---------------------------------------------------------------
+//
+// Layout Section
+// Adds top and bottom padding to create a "band" of content
+//
+//---------------------------------------------------------------
+
+.l-section {
+  padding: rem(60px) 0;
+
+  @include breakpoint(bp(medium)) {
+    padding: rem(80px 0);
+  }
+}
+
+.l-section__cta {
+  margin: rem(60px 0 0);
+  text-align: center;
+}
+
+.l-section--icons {
+  padding-top: 0;
+
+  @include breakpoint(bp(medium)) {
+    padding: rem(90px 0 60px);
+  }
+}
+
+.l-section--small {
+  @include breakpoint(bp(medium)) {
+    padding: rem(60px 0);
+  }
+}
+
+.l-section--events {
+  padding-top: rem(60px);
+  padding-bottom: 0;
+}
+
+.l-section--sub-pages {
+  padding: 5rem;
+  //background-color: color(mercury);
+}
+
+.l-section--intro {
+  padding: 0 0 rem(40) 0;
+  text-align: center;
+}
+
+.l-section--contentGrid + .l-section--contentGrid {
+  padding-top: rem(30);
+
+  @include breakpoint(bp(medium)) {
+    padding-top: rem(60);
+  }
+}
+
+.l-section--contentGrid + .l-section--download {
+  padding-top: 0;
+}
+
+.l-section--contentGrid {
+  &:nth-child(odd) {
+    background-color: color(light-gray);
+  }
+}

@@ -1,0 +1,50 @@
+//---------------------------------------------------------------
+//
+// Card Body
+// Body of the cards
+//
+//---------------------------------------------------------------
+
+.card-body {
+  @include aa-type;
+  @include typesize-small;
+  position: relative;
+  line-height: 1.5;
+  display: block;
+}
+
+a.card-body {
+  color: color(dark-blue);
+}
+
+.card-body__caption {
+  padding: rem(20px 20px 30px);
+  position: relative;
+  z-index: 1;
+}
+
+.card-body__cta {
+  position: absolute;
+  bottom: rem(20px);
+
+  a {
+    color: #fff;
+  }
+}
+
+.card-body--content {
+  padding: rem(20px);
+}
+
+.card-body--thumb {
+  .card-body__caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+.card-body--download {
+  @include ir(100%);
+}

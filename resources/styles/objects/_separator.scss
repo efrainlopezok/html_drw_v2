@@ -1,0 +1,36 @@
+.separator--campus {
+  height: 2px;
+  width: 100%;
+  background-color: color(cumberland);
+  position: relative;
+
+  &:before, &:after {
+    position: absolute;
+    top: 1px;
+    transform: translateY(-50%);
+    height: 15px;
+    width: 15px;
+    content: ' ';
+    border-radius: 50%;
+    border: 2px solid color(cumberland);
+    background-color: color(reverse);
+  }
+
+  &:before {
+    left: 0;
+  }
+  &:after {
+    right:0;
+  }
+}
+
+.l-campus-events__map {
+  .separator--campus{
+    margin: 0 0 2rem 0;
+    display: block;
+    @include breakpoint(bp(large)){
+      display: none;
+    }
+  }
+}
+

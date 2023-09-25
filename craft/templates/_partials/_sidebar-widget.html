@@ -1,0 +1,11 @@
+<div class="excerpt excerpt--aside" {% if block['sectionId'] | default(false) %}id="{{ block.sectionId }}"{% endif %}>
+
+  {% if title | length %}
+    <h3 class="excerpt__title">{{ title }}</h3>
+  {% endif %}
+
+  <div class="excerpt__body">
+    {{ body }}
+  </div>
+
+</div>

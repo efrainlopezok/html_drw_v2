@@ -1,0 +1,28 @@
+{% set background = entry.backgroundimage | length ? entry.backgroundimage.first.url : '' %}
+
+<div class="slider__slide js-slider__slide">
+  <div class="slide">
+    <div class="slide__bg {% if entry.contentAlignment == 'right' %} slide__bg--flipped {% endif %}" style="background-image: url({{ background }});"></div>
+    <div class="slide__content">
+      <div class="l-feature-section {% if entry.contentAlignment == 'right' %} l-feature-section--right {% endif %}">
+        <div class="l-feature-section__content">
+
+          <figure class="blockquote">
+            <blockquote class="blockquote__body">
+              <div class="blockquote__icon">
+                <svg class="icon icon--quotes">
+                  <use xlink:href="#svg--icon-quotes" />
+                </svg>
+              </div>
+              {{ entry.featuredText }}
+            </blockquote>
+            <div class="blockquote__attribution">
+              {{ entry.employeeName }}, {{ entry.employeeJobTitle }}
+            </div>
+          </figure>
+          {{ entry.featureBody }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

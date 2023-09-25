@@ -1,0 +1,11 @@
+<section class="l-section l-section--icons">
+  <div class="l-container">
+    {% include '_partials/_item-grid-list' with { items: entry.listItems, layout: '4-up' } %}
+
+    {% if entry.sectionCtaLink | length %}
+    <div class="l-section__cta">
+      <a href="{{ entry.sectionCtaLink }}" class="btn btn--large">{{ entry.sectionCtaText }}</a>
+    </div>
+    {% endif %}
+  </div>  
+</section>

@@ -1,0 +1,128 @@
+{% set backgroundClass = 'l-article--bg' %}
+
+<div class="l-article {% if entry.topSidebarBackground %} {{ backgroundClass }} {% endif %}">
+
+  <div class="l-article__main">
+    {% if entry.pageIntro | length %}
+      <div class="lead">
+        {{ entry.pageIntro }}
+      </div>
+    {% endif %}
+
+    {% for block in entry.bodyBlocks %}
+      {% include '_partials/_body-block-' ~ block.type %}
+    {% endfor %}
+
+  </div>
+
+  <aside class="l-article__aside">
+    {% if entry.displayOpenPositions %}
+      {% include '_partials/_open-positions' %}
+    {% endif %}
+
+    {% if entry.campusRecruiting %}
+      {% include '_partials/_campus-recruiting' %}
+    {% endif %}
+
+    {% if entry.topSidebarContent | length %}
+      {% for block in entry.topSidebarContent %}
+        {% if block.type == 'contentSection' %}
+          {% include '_partials/_sidebar-widget' with {
+            'title': block.sectionTitle,
+            'body': block.sectionBody
+          } %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  </aside>
+
+</div>
+
+
+{% if entry.employeeSpotlights | length %}
+
+  <div class="slider js-slider">
+    {% for entry in shuffle(entry.employeeSpotlights) %}
+      {% include '_partials/_employee-spotlight' %}
+    {% endfor %}
+  </div>
+
+{% endif %}
+
+{% if entry.listItems | length %}
+
+  {% if not entry.employeeSpotlights | length %}
+    <hr>
+  {% endif %}
+
+<div class="l-article {% if entry.bottomSidebarBackground %} {{ backgroundClass }} {% endif %}">
+
+  <div class="l-article__main">
+    {% if entry.listItems | length %}
+      {% include '_partials/_item-grid' %}
+    {% endif %}
+  </div>
+
+  {% if entry.bottomSidebarContent | length %}
+
+    <aside class="l-article__aside">
+      {% for block in entry.bottomSidebarContent %}
+        {% if block.type == 'contentSection' %}
+          {% include '_partials/_sidebar-widget' with {
+            'title': block.sectionTitle,
+            'body': block.sectionBody
+          } %}
+        {% endif %}
+      {% endfor %}
+    </aside>
+
+  {% endif %}
+
+</div>
+{% endif %}
+
+{% if entry.cardGrid | length %}
+<div class="l-section u-bg--light-gray">
+  <div class="l-container">
+    <div class="l-card-grid">
+      <div class="l-card-grid__intro">
+        <div class="excerpt excerpt--block">
+          <div class="excerpt__header">
+            <h2 class="excerpt__title">{{ entry.gridSectionTitle }}</h2>
+          </div>
+          {% if entry.gridSectionIntro | length %}
+          <div class="excerpt__intro">
+            {{ entry.gridSectionIntro }}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="l-card-grid__grid">
+        <div class="l-masonry-grid js-updates-grid">
+          <div class="l-masonry-grid__item--sizer"></div>
+          {% for block in entry.cardGrid %}
+            {% if block.type == 'bios' %}
+              {% if block.displayBios %}
+                {% for employee in craft.entries.section('employeeBio').find() %}
+                  <div class="l-masonry-grid__item">
+                    {% include '_partials/_card-bio' %}
+                  </div>
+                {% endfor %}
+              {% endif %}
+            {% elseif block.type == 'card' %}
+              <div class="l-masonry-grid__item l-masonry-grid__item--{{ block.cardWidth }}">
+                {% include '_partials/_card-default' %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% if entry.showUpdatesGrid %}
+  {% include '_partials/_updates-grid' %}
+{% endif %}

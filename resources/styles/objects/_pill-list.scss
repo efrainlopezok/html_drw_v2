@@ -1,0 +1,25 @@
+//---------------------------------------------------------------
+//
+// Pill List
+// It's a list, with pills at the end!
+//
+//---------------------------------------------------------------
+
+.pill-list {
+  @include block-list;
+  color: color(manatee);
+  
+  > li {
+    margin: 1.5em 0;
+  }
+  
+  a {
+    @include no-underline;
+    color: color(manatee);
+  }
+}
+
+.pill-list__text {
+  @include nice-underline;
+  display: inline-block;
+}

@@ -1,0 +1,90 @@
+.flickity-page-dots {
+  bottom: 0;
+  padding: 2em 0;
+  z-index: 99;
+
+  .dot {
+    background-color: transparent;
+    border: 1px solid color(dark-blue);
+    opacity: 1;
+    width: 12px;
+    height: 12px;
+
+    &.is-selected {
+      background-color: color(dark-blue);
+    }
+
+    @include breakpoint(bp(large)) {
+      border: 1px solid #fff;
+      &.is-selected {
+        background-color: #fff;
+      }
+    }
+  }
+}
+
+.flickity-prev-next-button {
+  top: auto;
+  bottom: 0;
+  z-index: 120;
+
+  @include breakpoint(bp(large)) {
+    top: 50%;
+    bottom: auto;
+  }
+}
+
+.l-campus-events {
+  .flickity-viewport {
+    overflow: visible;
+
+    @include breakpoint(bp(medium)) {
+      overflow: hidden;
+    }
+
+    &:before,
+    &:after {
+      content: '';
+      display: none;
+      width: 6%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      z-index: 99;
+
+      @include breakpoint(bp(medium)) {
+        display: block;
+        width: 10%;
+      }
+    }
+
+    &:before {
+      left: 0;
+      background-image: linear-gradient(to right, color(reverse), rgba(color(reverse), 0));
+    }
+
+    &:after {
+      right: 0;
+      background-image: linear-gradient(to left, color(reverse), rgba(color(reverse), 0));
+    }
+  }
+
+  .flickity-page-dots {
+    padding: 0;
+    bottom: rem(-40);
+  }
+
+  .flickity-prev-next-button {
+    display: none;
+    background: color(dark-blue);
+    top: 50%;
+
+    @include breakpoint(bp(medium)) {
+      display: block;
+    }
+  }
+
+  .flickity-prev-next-button .arrow {
+    fill: #fff;
+  }
+}

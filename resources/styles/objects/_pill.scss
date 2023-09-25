@@ -1,0 +1,28 @@
+//---------------------------------------------------------------
+//
+// Pill
+// Rounded surroundings for little numbers mostly
+//
+//---------------------------------------------------------------
+
+.pill {
+  display: inline-block;
+  background-color: color(bright-teal);
+  color: #fff;
+  border-radius: 20px;
+  letter-spacing: 0;
+  text-align: center;
+  font-size: .9em;
+  min-width: 25px;
+  height: 20px;
+}
+
+.pill--small {
+  margin-left: .25em;
+}
+
+@each $color, $value in $colors {
+  .pill--#{$color} {
+    background-color: $value;
+  }
+}

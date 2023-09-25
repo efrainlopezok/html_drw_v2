@@ -1,0 +1,58 @@
+<section class="l-section l-section--contentGrid">
+  <div class="l-container">
+    <div class="l-card-grid">
+      {% if block.gridSectionTitle | length or block.gridSectionDescription | length %}
+      <div class="l-card-grid__intro">
+        <div class="excerpt excerpt--block">
+          {% if block.gridSectionTitle | length %}
+            <h2 class="excerpt__title">{{ block.gridSectionTitle }}</h2>
+          {% endif %}
+
+          {% if block.gridSectionDescription | length %}
+            <div class="excerpt__intro">
+              {{ block.gridSectionDescription }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      {% endif %}
+      <div class="l-card-grid__grid">
+        <div class="l-item-grid l-item-grid--3-up l-item-grid--arrow">
+          {% for item in block.gridSectionItems %}
+            <div class="l-item-grid__item">
+              <div class="excerpt excerpt--aside">
+                {% if item.itemTitle | length %}
+                  <h4 class="excerpt__title">{{ item.itemTitle }}</h4>
+                {% endif %}
+
+                {% if item.itemDescription | length %}
+                  <div class="excerpt__body">
+                    {{ item.itemDescription }}
+                  </div>
+                {% endif %}
+              </div>
+
+
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% if block.gridSectionCta | length %}
+    <div class="l-container">
+      <a class="download download--campus" href="{{ block.gridSectionCta.url }}" target="_blank" rel="noopener noreferrer">
+        <div class="download__icon">
+          <svg class="icon icon--download">
+            <use xlink:href="#svg--icon-download" />
+          </svg>
+        </div>
+        <div class="download__text">
+          {{ block.gridSectionCta.text }}
+        </div>
+      </a>
+    </div>
+  {% endif %}
+
+</section>

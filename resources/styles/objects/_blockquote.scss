@@ -1,0 +1,57 @@
+//---------------------------------------------------------------
+//
+// Blockquotes!
+// Blockquote body with an icon to the side
+//
+//---------------------------------------------------------------
+
+.blockquote {
+  @include type-blockquote;
+  margin-bottom: rem(20px);
+}
+
+.blockquote__body {
+  position: relative;
+}
+
+.blockquote__icon {
+  margin-bottom: rem(20);
+  @include breakpoint(bp(large)) {
+    background-color: color(reverse);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: span(1 of 5) * -1; // this is pretty contextual. 
+    margin-bottom: 0;
+
+    > svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateY(-50%) translateX(-50%);
+    }
+  }
+}
+
+.blockquote__attribution {
+  @include type-cap-heading;
+  color: color(dark-blue);
+}
+
+.blockquote__body + .blockquote__attribution {
+  margin-top: rem(15px);
+  margin-bottom: rem(30px);
+}
+
+.blockquote--pullquote {
+  @include span(5 of 9);
+  float: right;
+  margin: span(1) (span(1) * -1) span(1) span(1);
+  color: color(bright-teal);
+
+  .blockquote__attribution {
+    font-family: $primary-font;
+  }
+}

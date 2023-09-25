@@ -1,0 +1,120 @@
+//---------------------------------------------------------------
+//
+// Layout: Site Header
+// Controls positioning of campus header elements
+//
+//---------------------------------------------------------------
+
+.l-campus-header {
+  transition: opacity 0.35s ease-in-out;
+  opacity: 1;
+  padding: rem(20px 0);
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  left: 0;
+  right: 0;
+  z-index: 100;
+
+  @include breakpoint(bp(medium)) {
+    padding-top: rem(30px);
+    padding-bottom: 0;
+  }
+
+  @include breakpoint(bp(large)) {
+    padding-top: rem(60px);
+    padding-bottom: 0;
+  }
+}
+
+.l-campus-header__logo {
+  width: 20%;
+  max-width: 80px;
+
+  @include breakpoint(bp(medium)) {
+    @include span(2 of 12 at 1);
+    margin-left: 0;
+  }
+
+  @include breakpoint(bp(large)) {
+    @include span(1 of 12 at 1);
+  }
+}
+
+.l-campus-header__nav-toggle {
+  position: absolute;
+  right: rem(15px);
+  top: 50%;
+  transform: translateY(-50%);
+
+  a {
+    color: #fff;
+  }
+
+  @include breakpoint(bp(medium)) {
+    display: none;
+  }
+}
+
+.l-campus-header__nav {
+  display: none;
+  background-color: color(reverse);
+  box-shadow: 0 4px 10px rgba(#000, 0.4);
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+
+  &:after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: rem(8px);
+    top: 0;
+    transform: rotate(45deg) translateX(-50%);
+    transform-origin: 50% 50%;
+    background-color: inherit;
+  }
+
+  &.is-active,
+  .no-js & {
+    display: block;
+  }
+
+  .no-js & {
+    top: 0;
+    position: relative;
+  }
+
+  @include breakpoint(bp(medium)) {
+    @include span(10 of 12 at 3);
+    background-color: transparent;
+    box-shadow: none;
+    padding-top: rem(25px);
+    display: block;
+    position: relative;
+    top: 0;
+    padding-top: 0;
+    clear: none;
+  }
+}
+
+.video-active .l-campus-header {
+  @include breakpoint(bp(medium)) {
+    opacity: 0;
+  }
+
+}
+
+.video-active {
+  .l-page-header__svg {
+    opacity: 0;
+  }
+}
+
+
+

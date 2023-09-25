@@ -1,0 +1,38 @@
+//---------------------------------------------------------------
+//
+// Rem Mixin
+// Replaces pixel vaules with REM values
+//
+//
+// USAGE:
+// You can pass in one value or a list of values, with or without
+// a px unit attached. Does not currently support any value besides ps\
+// with the exception of 'auto'
+//
+// YES:
+// padding: rem(20px);
+// padding: rem(20px 0 30px);
+// padding: rem(20 auto 30);
+//---------------------------------------------------------------
+
+$baseline-rem: 16 !default;
+
+@function rem($values) {
+  $final-values: ();
+  @each $value in $values {
+
+    @if type-of($value) == number and unitless($value) != true {
+      $value: strip-unit($value);
+    }
+
+    @if $value == 0 or $value == 'auto' {
+      $final-values: append($final-values, $value);
+    } @else {
+      $rem-value: ($value / $baseline-rem) * 1rem;
+      $final-values: append($final-values, $rem-value);
+    }
+
+  }
+
+  @return $final-values;
+}

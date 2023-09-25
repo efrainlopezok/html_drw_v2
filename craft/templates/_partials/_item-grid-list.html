@@ -1,0 +1,30 @@
+{% set base_class = 'l-item-grid' %}
+{% set classes = [base_class] %}
+{% set evenItems = items | length % 2 %}
+
+{% if layout is defined %}
+  {% set classes = classes | merge([base_class ~ '--' ~ layout ]) %}
+{% endif %}
+
+{% if mods is defined %}
+  {% for mod in mods %}
+    {% set classes = classes | merge([base_class ~ '--' ~ mod]) %}
+  {% endfor %}
+{% endif %}
+
+<ul class="{{ classes | join(' ') }}">
+  {% for item in items %}
+
+  <li class="{{ base_class }}__item">
+    {% include [ '_partials/_excerpt-' ~ item.type, '_partials/_excerpt' ] with {
+      block: item,
+      modifier: layout is defined ?: false
+    } %}
+  </li>
+
+  {% endfor %}
+
+  {% if entry.slug == 'careers' %}
+    {% include '_partials/_callout-' ~ entry.calloutType | default('recruiting') %}
+  {% endif %}
+</ul>

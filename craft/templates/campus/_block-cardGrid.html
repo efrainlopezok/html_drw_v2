@@ -1,0 +1,61 @@
+<div class="l-section l-section--contentGrid">
+  <div class="l-container">
+    <div class="">
+      <div class="">
+        <div class="excerpt excerpt--block">
+          <div class="excerpt__header">
+            <h2 class="excerpt__title">{{ block.gridSectionTitle }}</h2>
+          </div>
+          {% if block.gridSectionIntro | length %}
+          <div class="excerpt__intro">
+            {{ block.gridSectionIntro }}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="l-card-grid__grid">
+        <div class="l-masonry-grid js-updates-grid">
+          <div class="l-masonry-grid__item--sizer"></div>
+            {% for row in block.cardGrid %}
+              <div class="l-masonry-grid__item">
+                <article class="card card--default card--one-third">
+                  <div class="card__header">
+                    <aside class="card-meta">
+                      <span class="icon-text__text">
+                        {{ row.cardTitle }}
+                      </span>
+                    </aside>
+                  </div>
+                  <section class="card__body">
+                    <div class="card-body">
+                      {% if row.cardImage | length %}
+                      <figure class="img img--75">
+                        <img src="{{ row.cardImage.first.getUrl({
+                          width: 400,
+                          height: 320
+                        }) }}" alt="{{ row.cardTitle }}">
+                      </figure>
+                      {% endif %}
+                    </div>
+                  </section>
+                </article>
+              </div>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    {% if block.benefitsCallout %}
+      {% for row in block.benefitsCallout %}
+        <div class="l-card-grid__cta l-card-grid__cta--campus">
+          {% include 'campus/_benefit-callout' with {
+            text: row.benefitCalloutText,
+            button: row.benefitCalloutButton,
+            anchor: row.anchorId
+          } %}
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>

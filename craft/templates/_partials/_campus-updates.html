@@ -1,0 +1,13 @@
+{% set grams = craft.drw.getGrams(3) | default([]) %}
+
+<section class="l-section u-bg--mercury">
+  <div class="l-container">
+    <div class="l-item-grid l-item-grid--3-up">
+      {% for entry in grams %}
+        <div class="l-item-grid__item">
+          {% include '_partials/_card-update' %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

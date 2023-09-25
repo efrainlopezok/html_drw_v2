@@ -1,0 +1,22 @@
+{% set base_class = 'l-item-grid' %}
+{% set classes = [base_class] %}
+{% set evenItems = items | length % 2 %}
+
+{% if layout is defined %}
+  {% set classes = classes | merge([base_class ~ '--' ~ layout ]) %}
+{% endif %}
+
+{% for item in items %}
+  {% include [ '_partials/_excerpt-section-' ~ item.type] with { block: item } %}
+{% endfor %}
+
+{% if craft.request.lastSegment == 'careers' %}
+  <article class="excerpt excerpt--cta">
+    <div class="excerpt__body">
+      <p>{{ siteGlobals.recruitingCallout }}</p>
+    </div>
+    <div class="excerpt__cta">
+        <a href="{{ url('careers/campus-recruiting') }}" class="btn btn--large">Learn More</a>
+      </div>
+  </article>
+{% endif %}

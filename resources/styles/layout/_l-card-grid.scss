@@ -1,0 +1,35 @@
+.l-card-grid {
+  @include container;
+}
+
+.l-card-grid__intro {
+  @include breakpoint(bp(large)) {
+    @include span(8 of 12 0.5 at 1);
+  }
+}
+
+.l-card-grid__intro + .l-card-grid__grid {
+  margin-top: rem(40px);
+}
+
+.l-card-grid__grid {
+
+  @include breakpoint(bp(large)) {
+    @include span(12 of 12 at 1);
+    clear: both;
+  }
+}
+
+
+.l-card-grid__cta {
+  padding-top: rem(40);
+
+  @include breakpoint(bp(large)) {
+    padding-top: rem(60);
+    clear: both;
+  }
+}
+
+.l-card-grid__cta--campus {
+  padding-top: 0;
+}

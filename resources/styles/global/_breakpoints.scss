@@ -1,0 +1,10 @@
+$breakpoints: (
+  medium: '600px',
+  large: '960px',
+  xlarge: '1220px'
+);
+
+
+@function bp($break) {
+  @return map-get($breakpoints, $break);
+}

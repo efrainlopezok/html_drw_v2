@@ -1,0 +1,25 @@
+//---------------------------------------------------------------
+//
+// Container Layout
+// Max width container with a little padding.
+//
+//---------------------------------------------------------------
+
+.l-container {
+  @include content-container;
+}
+
+.l-container--404 {
+  padding-top: 15%;
+  padding-bottom: 20%;
+  height: 100%;
+}
+
+.l-container--narrow {
+  @include content-container(83.33%);
+  max-width: $max-width * .83333;
+}
+
+.l-container--form {
+  max-width: $max-width * 0.5;
+}

@@ -1,0 +1,63 @@
+{% import '_macros/_linkIt' as linkIt %}
+
+{% include 'campus/_child-header.html' %}
+
+<section class="l-section l-section--contentGrid">
+  <div class="l-container">
+    <div class="l-card-grid">
+      <div class="l-card-grid__intro">
+          <div class="excerpt excerpt--title">
+              <div class="excerpt__header">
+                  <h2 class="excerpt__title">{{ entry.jobOpeningsTitle | default('The Openings') }}</h2>
+              </div>
+          </div>
+      </div>
+      <div class="l-card-grid__grid">
+
+        {% for category in craft.categories.group('companies') %}
+            <div class="l-job-opening">
+                <div class=" l-job-company__thumbnail">
+
+                    {% if category.logo | length %}
+                        <img src="{{ category.logo.first.url }}"
+                             alt="{{ category.logo.first.title }}" />
+                    {% endif %}
+
+                </div>
+                <div class="l-job-opening__body l-job-opening__body--description ">
+                    {% if category.description | length  %}
+                        {{ category.description }}
+                    {% endif %}
+                </div>
+            </div>
+
+            {% for block in entry.jobOpenings %}
+                {% if block.company.first.companyName == category.companyName %}
+                    {% include 'campus/_job-opening' %}
+                {% endif %}
+            {% endfor %}
+            {% if not loop.last %}
+                <div class="separator--campus l-job-opening">
+                </div>
+            {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% if entry.employeeSpotlights | length %}
+
+    <div class="slider js-slider">
+        {% for entry in shuffle(entry.employeeSpotlights) %}
+            {% include '_partials/_employee-spotlight' %}
+        {% endfor %}
+    </div>
+
+{% endif %}
+
+
+{% for block in entry.campusBlocks %}
+  {% include 'campus/_block-' ~ block.type %}
+{% endfor %}

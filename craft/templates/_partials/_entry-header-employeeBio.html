@@ -1,0 +1,29 @@
+{% set headerSize = {
+  mode: 'crop',
+  position: entry.cropAnchor | length ? entry.cropAnchor | kebab : 'top-left',
+  width: 1280,
+  height: 600,
+} %}
+
+{% set backgroundImageSrc = entry.headerImage | length ? entry.headerImage.first.getUrl(headerSize) : '' %}
+{% if backgroundImageSrc | length %}
+<div class="l-page-header l-page-header--bottom u-bg u-bg--image u-bg--bio" style="background-image: url({{ backgroundImageSrc }});">
+  <div class="l-page-header__inner">
+    <div class="l-container">
+      <div class="heading-group heading-group--navy">
+        <h1 class="heading-group__title">{{ entry.bioEmployeeName }}</h1>
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+<div class="l-page-header l-page-header--bottom l-page-header--small">
+  <div class="l-page-header__inner">
+    <div class="l-container">
+      <div class="heading-group">
+        <h1 class="heading-group__title">{{ entry.bioEmployeeName }}</h1>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}

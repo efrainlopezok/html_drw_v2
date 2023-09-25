@@ -1,0 +1,91 @@
+//==============================================================================
+// Campus Event
+// A brief description of this object
+//
+// Modifiers:
+// -----------------------------------------------------------------------------
+// - Modifier      : Modifier Description
+//==============================================================================
+
+$event-padding: rem(16);
+
+// -----------------------------------------------------------------------------
+// Base
+// -----------------------------------------------------------------------------
+
+.l-event {
+  @include no-underline;
+  display: block;
+  width: 290px;
+  min-height: 480px;
+  margin-right: $event-padding / 2;
+  border: 1px solid shade(color(light-gray), 15);
+  vertical-align: top;
+  border-radius: 3px;
+  background-color: #fff;
+  transform: scale(0.9);
+  transition-property: transform;
+  transition-duration: 0.35s;
+  position: relative;
+  color: inherit;
+  text-align: left;
+  padding: $event-padding;
+
+  @include breakpoint(bp(medium)) {
+    width: 320px;
+    margin-right: $event-padding;
+  }
+
+  &.is-selected {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    transform: scale(1);
+  }
+
+  &.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Elements
+// -----------------------------------------------------------------------------
+
+.l-event__meta {
+  position: absolute;
+  width: 100%;
+  background-color: mix(#fff, color(bright-teal), 10%);
+  border-radius: 3px 3px 0 0;
+  top: 0;
+  left: 0;
+  color: #fff;
+  padding: $event-padding;
+}
+
+.l-event__header {
+  margin-top: rem(90);
+  margin-bottom: rem(30);
+}
+
+.l-event__cta {
+  position: absolute;
+  bottom: $event-padding;
+  right: $event-padding;
+  left: $event-padding;
+  line-height: 1;
+}
+
+.l-event__body {
+  position: absolute;
+  top: 55%;
+  left: 0;
+  padding: $event-padding;
+}
+
+// -----------------------------------------------------------------------------
+// Modifiers
+// -----------------------------------------------------------------------------
+
+.l-event--modifier {
+
+}

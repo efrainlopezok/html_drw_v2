@@ -1,0 +1,31 @@
+{% if block.sectionIntroduction | length and block.sectionTitle | length and block.benefitList | length %}
+
+<div class="l-section l-section--contentGrid">
+  <div class="l-container">
+    <div class="l-card-grid">
+      <div class="l-card-grid__intro">
+        <div class="excerpt excerpt--block">
+          <div class="excerpt__header">
+            <h2 class="excerpt__title">{{ block.sectionTitle }}</h2>
+          </div>
+          {% if block.sectionIntroduction | length %}
+          <div class="excerpt__intro">
+            {{ block.sectionIntroduction }}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="l-card-grid__grid">
+        {% if block.benefitList | length %}
+          <ul class="l-benefit-list">
+            {% for row in block.benefitList %}
+              <li class="l-benefit-list__item">{{ row.benefit }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}

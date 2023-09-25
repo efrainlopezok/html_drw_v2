@@ -1,0 +1,25 @@
+{% set params = {
+    section: entry.section,
+    order:   'postDate',
+    type:   entry.type
+} %}
+
+{% set next = entry.getNext(params) %}
+{% set prev = entry.getPrev(params) %}
+
+
+<nav class="entry-pagination">
+  <div class="l-container">
+    {% if prev | length %}
+    <div data-href="{{ prev.url }}" class="entry-pagination__entry entry-pagination__entry--next js-block-link">
+      {% include ['_partials/_tiny-entry-' ~ entry.type, '_partials/_tiny-entry-default.html'] with { 'entry': prev, 'directionTitle': 'Next' } %}
+    </div>
+    {% endif %}
+
+    {% if next | length %}
+    <div data-href="{{ next.url }}" class="entry-pagination__entry entry-pagination__entry--previous js-block-link">
+      {% include ['_partials/_tiny-entry-' ~ entry.type, '_partials/_tiny-entry-default.html'] with { 'entry': next, 'directionTitle': 'Previous' }%}
+    </div>
+    {% endif %}
+  </div>
+</nav>

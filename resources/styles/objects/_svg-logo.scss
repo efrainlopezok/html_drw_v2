@@ -1,0 +1,26 @@
+//---------------------------------------------------------------
+//
+// SVG Logo
+// Fills for the main svg logomark. Uses a lot of parent selectors
+// mostly so we don't have to mess with the actual SVG markup.
+//
+//---------------------------------------------------------------
+
+.svg-logo {
+
+}
+
+.svg-logo__main-fill {
+  fill: currentColor;
+}
+
+.svg-logo__carat {
+  // fill: color(bright-teal);
+}
+
+
+.site-logo--reverse {
+  .svg-logo__main-fill {
+    fill: #fff;
+  }
+}

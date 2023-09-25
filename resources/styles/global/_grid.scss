@@ -1,0 +1,36 @@
+//---------------------------------------------------------------
+//
+// Grid
+// Susy settings and grid settings
+//
+//---------------------------------------------------------------
+
+$max-width: 1200px;
+$grid-layout: layout(auto 12 .5);
+
+$susy: (
+  output: isolate,
+  columns: 12,
+  gutters: 0,
+  global-box-sizing: border-box,
+  debug: (
+    image: hide,
+  )
+);
+
+@mixin content-container($width: auto) {
+  @include container($width);
+  max-width: $max-width;
+  padding-right: 6%;
+  padding-left: 6%;
+
+  @include breakpoint(bp(large)) {
+    padding-right: 4%;
+    padding-left: 4%;
+  }
+
+  @include breakpoint(bp(xlarge)) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

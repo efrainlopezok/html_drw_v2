@@ -1,0 +1,33 @@
+{% extends "_layout" %}
+{% block content %}
+
+  <div class="u-bg--light-gray">
+    <div class="l-article">
+      <div class="l-article__main">
+        <div class="l-masonry-grid l-masonry-grid--2-up js-updates-grid">
+          <div class="l-masonry-grid__item--sizer"></div>
+          {% for location in entry.contactLocations %}
+          <div class="l-masonry-grid__item">
+            {% include '_partials/_card-location' %}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <aside class="l-article__aside">
+        {% include '_partials/_connect' %}
+
+        {% if entry.topSidebarContent | length %}
+          {% for block in entry.topSidebarContent %}
+            {% if block.type == 'contentSection' %}
+              {% include '_partials/_sidebar-widget' with {
+                'title': block.sectionTitle,
+                'body': block.sectionBody
+              } %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </aside>
+    </div>
+  </div>
+
+{% endblock %}

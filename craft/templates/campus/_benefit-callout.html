@@ -1,0 +1,15 @@
+<div class="excerpt excerpt--benefit-cta">
+  <div class="excerpt__body">
+    {{ text }}
+  </div>
+  <div class="excerpt__cta">
+    <a href="{{ button.url }}{% if anchor | default(false) %}#{{ anchor }}{% endif %}"
+       {% if button['target'] | default('') | length %}
+         target="{{ button.target }}"
+       {% endif %}
+       class="btn btn--large btn--campus"
+    >
+      {{ button.text }}
+    </a>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+{% set cities = craft.drw.getCities() %}
+
+<div class="l-filter-list">
+  <h4 class="l-filter-list__title">Locations</h4>
+  <div class="l-filter-list__list js-filter">
+    <ul class="filter-list js-filter__list">
+      <li data-filter-value="all" {{ craft.request.getQuery('location') == null ? 'class="is-active"' : '' }}>
+        <a href="{{ url('careers/listings', {categories: craft.request.getQuery('categories')} ) }}">All</a>
+      </li>
+      {% for city in cities %}
+        <li data-filter-type="locations" data-filter-value="{{ city.value }}" {{ city.value == craft.request.getQuery('location') ? 'class="is-active"' : '' }}>
+          <a href="{{ url('careers/listings', {location: city.value, categories: craft.request.getQuery('categories')} ) }}">
+            {{ city.value }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

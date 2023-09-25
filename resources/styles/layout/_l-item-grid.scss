@@ -1,0 +1,278 @@
+//  ---------------------------------------------------------------
+//
+// Item Grid
+// Throws a list of items into a grid (usually consisting of posts)
+//
+//---------------------------------------------------------------
+
+.l-item-grid {
+  @include container($grid-layout);
+  @include block-list;
+}
+
+.l-item-grid__item {
+  margin-top: rem(60px);
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  @include breakpoint(bp(medium)) {
+    @include gallery(6 of $grid-layout);
+
+    &:nth-child(-n+2) {
+      margin-top: 0;
+    }
+  }
+
+  @include breakpoint(bp(large)) {
+    @include gallery(3 of $grid-layout);
+    margin-top: 0;
+  }
+}
+
+.l-item-grid__item--full {
+  // we need imprtant here to override all the nth-children from the gallery calls :-(
+  width: 100% !important;
+  text-align: center;
+}
+
+//---------------------------------------------------------------
+// Modifiers
+//---------------------------------------------------------------
+
+.l-item-grid--4-up {
+  .l-item-grid__item {
+    &:first-child {
+      margin-top: rem(60px);
+
+      @include breakpoint(bp(medium)) {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+.l-item-grid--3-up {
+  .l-item-grid__item {
+    margin-top: rem(30px);
+    margin-bottom: 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+    &.l-item-grid__item--campus {
+      margin-bottom: 25px;
+    }
+
+    @include breakpoint(bp(medium), bp(large)) {
+      @include gallery(6 of $grid-layout);
+      margin-top: rem(40);
+
+      &:nth-child(n + 2) {
+        margin-top: 0;
+      }
+    }
+
+    @include breakpoint(bp(large)) {
+      @include gallery(4 of $grid-layout);
+      margin-top: rem(40px);
+
+      &:nth-child(n + 3) {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+.l-item-grid--2-up {
+  .l-item-grid__item {
+    @include breakpoint(bp(large)) {
+      @include gallery(1 of 2 0.5);
+      margin-bottom: rem(80px);
+    }
+  }
+}
+
+.l-item-grid--campus-grams {
+  .l-item-grid__item {
+    @include breakpoint(bp(medium)) {
+      @include gallery(4 of 12 0.5);
+    }
+  }
+}
+
+// FANCY STYLES
+// =============================================================================
+
+// A little more specificity here makes it easier to override a bunch of styles
+.l-item-grid.l-item-grid--callout,
+.l-item-grid.l-item-grid--arrow {
+  display: flex;
+  flex-flow: column;
+
+  @include breakpoint(bp(large)) {
+    flex-flow: row wrap;
+    padding-right: rem(40px);
+    overflow: hidden;
+  }
+
+  .l-item-grid__item {
+    width: 100%;
+    margin: 0;
+    padding: 1.5em 1.5em 1.5em 1.5em;
+
+    @include breakpoint(bp(large)) {
+      width: span(4 of 12);
+    }
+  }
+}
+
+.l-item-grid.l-item-grid--callout {
+  margin-left: -20px;
+
+  @include breakpoint(bp(large)) {
+    justify-content: space-between;
+  }
+
+  .l-item-grid__item {
+    @include aa-type;
+    padding: 1.5em 2em;
+    flex-grow: 1;
+    margin-left: 20px;
+    background-color: color(dark-blue);
+    color: color(reverse);
+    position: relative;
+
+    // I hate myself for this, but I think it's the best way to ensure these
+    // titles are reversed out in this specific scenario
+    .excerpt__title {
+      color: color(reverse);
+    }
+
+    @include breakpoint(bp(large)) {
+      width: span(4 of 12 0.5);
+
+      &:after {
+        $item-size: 70px;
+
+        content: '+';
+        font-weight: 700;
+        font-family: $secondary-font;
+        height: $item-size;
+        width: $item-size;
+        font-size: rem(48);
+        color: color(reverse);
+        background-color: color(bright-teal);
+        line-height: $item-size;
+        text-align: center;
+        display: block;
+        border-radius: $item-size / 2;
+        position: absolute;
+        right: (($item-size / 2) + 10px) * -1;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+      }
+
+      &:last-child:after {
+        display: none;
+      }
+    }
+  }
+}
+
+.l-item-grid.l-item-grid--arrow {
+
+  .l-item-grid__item {
+    background-color: color(medium-blue);
+    position: relative;
+
+    &:nth-child(2n) {
+      background-color: color(bright-teal);
+    }
+
+    &:nth-child(3n) {
+      background-color: color(medium-blue);
+    }
+
+    @include breakpoint(bp(large)) {
+      width: span(4 of 12);
+      padding: 1.5em 1.5em 1.5em 3.5em;
+
+      &:after {
+        content: '';
+        display: block;
+        border-width: 280px 50px;
+        border-style: solid;
+        border-color: transparent transparent transparent color(medium-blue);
+        position: absolute;
+        right: -88px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+      }
+
+      &:first-child {
+        padding-left: 1.5em;
+      }
+
+      &:nth-child(2n):after {
+        border-color: transparent transparent transparent color(bright-teal);
+      }
+
+      &:nth-child(3n):after {
+        border-color: transparent transparent transparent color(medium-blue);
+      }
+    }
+  }
+}
+
+.l-item-grid.l-item-grid--decal {
+  display: flex;
+  flex-direction: column;
+  @include breakpoint(bp(large)){
+    flex-direction: row;
+  }
+
+  .l-item-grid__item {
+    //background-color: mix(color(humming-bird), color(bright-teal), 100);
+    background-color: color(medium-blue);
+    position: relative;
+    margin: 0;
+    float: none;
+    padding: 2em;
+    width: span(12 of 12 );
+
+    @include breakpoint(bp(large)){
+      width: span(4 of 12 );
+    }
+
+
+
+    &:nth-child(2n) {
+      background-color: color(bright-teal);
+    }
+
+
+
+    //.decal--btm {
+    //  display: none;
+    //  @include breakpoint(bp(large)){
+    //    display: block;
+    //    position: absolute;
+    //    left: 0;
+    //    bottom: 0;
+    //    right: 0;
+    //    width: 100%;
+    //  }
+    //}
+
+
+
+  }
+}
+
+/*
+  [1] Parent width (877.5) / gutter width (95) * 100 = 10.8
+*/

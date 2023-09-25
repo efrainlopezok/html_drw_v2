@@ -1,0 +1,13 @@
+//---------------------------------------------------------------
+//
+// Color Utilties
+// Change the text or background color of something
+//
+//---------------------------------------------------------------
+
+// Outputs a text-color utility class for each color in the colors map
+@each $color, $value in $colors {
+  .u-color--#{$color} {
+    color: $value;
+  }
+}

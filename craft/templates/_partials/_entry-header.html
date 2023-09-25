@@ -1,0 +1,12 @@
+{% set backgroundImageSrc = entry.headerImage | length ? entry.headerImage.first.url : '' %}
+
+<div class="l-page-header u-bg u-bg--image u-overlay u-overlay--dark-blue" style="background-image: url({{ backgroundImageSrc }});">
+  <div class="l-page-header__inner">
+    <div class="l-container">
+      <div class="heading-group">
+        <span class="type-tag u-bg--dark-blue">{{ entry.type.name }}</span>
+        <h1 class="heading-group__title">{{ entry.title }}</h1>
+      </div>
+    </div>
+  </div>
+</div>

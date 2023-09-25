@@ -1,0 +1,35 @@
+.l-alert{
+  background-color: #b1efea;
+  color: #233b56;
+  font-family: "proxima-nova",sans-serif;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 1.25rem;
+  position: relative;
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #00d4c1;
+    font-size: 1.25rem;
+    font-weight: bold;
+    line-height: 1rem;
+    cursor: pointer;
+  }
+}
+
+.l-alert--container {
+  display: flex;
+  max-width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  .icon--warning {
+    overflow: initial;
+  }
+  .l-alert--item {
+    margin: 0 5px;
+  }
+}

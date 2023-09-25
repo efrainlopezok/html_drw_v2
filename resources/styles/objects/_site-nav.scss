@@ -1,0 +1,163 @@
+//---------------------------------------------------------------
+//
+// Site Navigation
+// Main site navigation
+//
+//---------------------------------------------------------------
+
+.site-nav {
+  @include container;
+  @include block-list;
+  @include type-cap-heading;
+  text-align: right;
+}
+
+// Let's make this thing inline
+.site-nav > li {
+  @include breakpoint(bp(medium)) {
+    margin-left: 3%;
+    display: inline-block;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+// Color all links
+.site-nav a {
+  text-decoration: none;
+  background-image: none;
+  color: color(blue-gray);
+  display: block;
+  padding: 0.5em 0;
+  transition-property: color;
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition-duration: .25s;
+
+  @include breakpoint(bp(medium)) {
+    padding: .25em 0;
+  }
+
+  &:hover {
+    color: color(dark-blue-gray);
+  }
+}
+
+// Active State
+.site-nav .is-active a,
+.site-nav a:hover {
+  @include no-underline;
+  color: #fff;
+
+  @include breakpoint( bp(medium) ) {
+    color: color(dark-blue);
+  }
+}
+
+.site-nav ul {
+  display: none;
+}
+
+
+//---------------------------------------------------------------
+// Modifiers
+//---------------------------------------------------------------
+
+.site-nav--footer {
+  margin-bottom: rem(20px);
+  text-align: left;
+
+  .site-nav__callout a {
+    color: color(bright-teal);
+  }
+
+  a:hover {
+    color: rgba(#fff, 0.5);
+  }
+
+  @include breakpoint(bp(medium)) {
+    > li {
+      margin-left: 0;
+      margin-bottom: 1em;
+      width:  48%;
+    }
+  }
+
+  @include breakpoint(bp(large)) {
+    > li {
+      width: auto;
+      margin-left: 2%;
+    }
+  }
+}
+
+.site-nav--footer a {
+  color: #fff;
+}
+
+.site-nav--header {
+  text-align: center;
+  padding: 1rem 0;
+
+  @include breakpoint( bp(medium) ) {
+    padding: 0;
+    text-align: left;
+  }
+
+  @include breakpoint(bp(large)) {
+    text-align: right;
+  }
+
+  > li {
+    margin-bottom: 1em;
+
+    @include breakpoint(bp(medium)) {
+      margin-bottom: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.site-nav.site-nav--campus {
+  @include breakpoint(bp(medium)) {
+    text-align: right;
+  }
+
+  .page--thank-you & {
+    > li > a {
+      color: color(dark-blue);
+
+      &:hover {
+        color: color(bright-teal);
+      }
+    }
+  }
+
+  > li > a {
+    color: color(dark-blue);
+
+    &:after {
+      content: '';
+      display: block;
+    }
+
+    &:hover {
+      @include underline-active;
+      color: color(bright-teal);
+    }
+
+    @include breakpoint(bp(medium)) {
+      @include nice-underline;
+      padding: 0;
+      color: color(reverse);
+
+      &:hover{
+        color: rgba(color(reverse), 0.5);
+      }
+    }
+  }
+}

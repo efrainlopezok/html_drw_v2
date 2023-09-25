@@ -1,0 +1,90 @@
+{% include '_partials/_page-header-campus' %}
+
+{% if entry.subPageCallouts | length %}
+    <div class="l-section u-bg--light-gray" id="notOnCampus">
+        <div class="l-container l-container--narrow">
+            {% if entry.subPageCalloutTitle | length %}
+                <div class="l-card-grid">
+                <div class="l-card-grid__intro">
+                    <div class="excerpt excerpt--title">
+                        <div class="excerpt__header">
+                            <h2 class="excerpt__title">{{ entry.subPageCalloutTitle }}</h2>
+                        </div>
+                        {% if entry.subPageCalloutSubtitle | length %}
+                            <div class="excerpt__intro">
+                                <p>{{ entry.subPageCalloutSubtitle }}</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+
+            <div class="l-card-grid__grid">
+                <div class="l-link-group">
+                    {% for entry in entry.subPageCallouts %}
+                        <a href="{{ entry.calloutEntry.first.url }}" class="btn btn--xlarge btn--full btn--campus">
+                            {{ entry.calloutTitle }}
+
+                            {% if entry.calloutSubtitle %}
+                                <span class="btn__subtitle">
+                    {{ entry.calloutSubtitle }}
+                  </span>
+                            {% endif %}
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% if calendarPlugin and calendarPlugin.isEnabled() and entry.eventsMapBackground | length %}
+  {% set events = craft.calendar.events({orderBy:'event_start_date'}) %}
+  {% if events | length %}
+    <div class="l-section l-section--events ">
+        <div class="l-container l-container--narrow">
+            <div class="excerpt excerpt--title">
+                <div class="excerpt__header">
+                    <h2 class="excerpt__title">{{ entry.eventsTitle }}</h2>
+                </div>
+                {% if entry.eventsSubtitle | length %}
+                    <div class="excerpt__intro">
+                        <p>{{ entry.eventsSubtitle }}</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="l-campus-events__map">
+            <img class="campus-map__bg" src="{{ entry.eventsMapBackground.first.getUrl() }}"/>
+            {% include 'campus/_map-event.html' %}
+            {% include '_partials/illustrations/_campus-map' %}
+        </div>
+
+    </div>
+  {% endif %}
+{% endif %}
+
+
+
+{% set grams = craft.drw.getGrams(3) | default([]) %}
+
+
+{% for block in entry.campusBlocks %}
+    {% if block.type == 'featuredEntries' %}
+        {% set grams = grams|merge(block.entries) %}
+    {% endif %}
+{% endfor %}
+
+<section class="l-section ">
+    <div class="l-container">
+        <div class="l-item-grid l-item-grid--3-up">
+            {% for entry in grams %}
+                <div class="l-item-grid__item l-item-grid__item--campus">
+                    {% include '_partials/_card-update' %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+

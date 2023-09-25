@@ -1,0 +1,46 @@
+{#
+ # Layout template
+ # ---------------
+ #
+ # This template defines your site’s global layout. It can be
+ # “extended” by other templates to fill in the gaps.
+ #
+ # See Twig’s Template Inheritance documentation for more details:
+ # http://twig.sensiolabs.org/doc/templates.html#template-inheritance
+ #}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Language" content="en">
+  {% set seo = craft.plugins.getPlugin('odcSeo' , false) %}
+  {% if seo.isEnabled() %}
+    {{ craft.odcSeo.meta }}
+  {% endif %}
+  <link rel="home" href="{{ siteUrl }}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {% include '_partials/_typekit-snippet' %}
+  {% include '_partials/_favicon-assets' %}
+
+  {% if siteUrl == 'http://drw.dev/' or siteUrl == 'http://drw.oneis.us/' %}
+    {% include '_partials/_bugherd' %}
+  {% endif %}
+
+  <link rel="stylesheet" href="{{ siteUrl }}/dist/styles/main.css">
+  <script src="{{ siteUrl }}/dist/scripts/modernizr.min.js"></script>
+</head>
+
+<body class="page page--{{ craft.request.lastSegment }} {% if bodyClass is defined %}{{ bodyClass }}{% endif %} {% if entry is defined%}page--{{ entry.slug }}{% endif %}">
+  {% include '_partials/_google-analytics' %}
+
+  <div class="svg-symbol">
+    {% include '_partials/symbol/svg/sprite.symbol.svg' ignore missing %}
+  </div>
+
+  {% block body %}{% endblock %}
+
+  <script src="{{ siteUrl }}/dist/scripts/main.min.js"></script>
+</body>
+</html>

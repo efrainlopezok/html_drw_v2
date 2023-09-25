@@ -1,0 +1,35 @@
+{% set outputWrapper = entry.listItemsTitle | length or entry.listItemsIntro %}
+
+{% if outputWrapper %}
+<div class="excerpt excerpt--block">
+  {% if entry.listItemsTitle | length %}
+    <div class="excerpt__header">
+      <h2 class="excerpt__title">{{ entry.listItemsTitle }}</h2>
+    </div>
+  {% endif %}
+
+  {% if entry.listItemsIntro | length %}
+    <div class="excerpt__intro">
+      <div class="rich-text">
+        {{ entry.listItemsIntro }}
+      </div>
+    </div>
+  {% endif %}
+
+</div>
+{% endif %}
+
+{% if entry.listItemsLayout | kebab == 'section' %}
+  {% include '_partials/_section-list' with { items: entry.sectionItems } %}
+{% else %}
+  {% include '_partials/_item-grid-list' with { layout: entry.listItemsLayout, items: entry.listItems } %}
+{% endif %}
+
+
+{% if entry.listItemOuttro | length %}
+  <div class="excerpt__intro">
+    <div class="rich-text">
+      {{ entry.listItemOuttro }}
+    </div>
+  </div>
+{% endif %}

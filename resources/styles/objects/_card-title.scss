@@ -1,0 +1,16 @@
+//---------------------------------------------------------------
+//
+// Card Title
+// Only controls the text styling of the title on an update title
+//
+//---------------------------------------------------------------
+
+.card-title {
+  @include type-update-title;
+  @include nice-underline;
+  color: #fff;
+
+  .card:hover &:after {
+    transform: scale(1);
+  }
+}

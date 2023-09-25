@@ -1,0 +1,25 @@
+//---------------------------------------------------------------
+//
+// Text Button
+// Button-y things that don't have a background.
+//
+//---------------------------------------------------------------
+
+.text-btn {
+  @include type-cap-heading;
+  display: inline-block;
+}
+
+.text-btn--reverse {
+  color: color(reverse);
+
+  &:hover,
+  &:focus {
+    outline: 0;
+    opacity: 0.6;
+  }
+}
+
+.text-btn--play {
+  @include no-underline;
+}

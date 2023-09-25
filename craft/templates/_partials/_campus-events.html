@@ -1,0 +1,64 @@
+{% set campuses = craft.calendar.calendars({
+  order: 'name'
+}) %}
+
+<div class="l-campus-events">
+  <div class="l-campus-events__title">
+    <div class="excerpt excerpt--title">
+      <div class="excerpt__header">
+        <h2 class="excerpt__title">{{ entry.eventsTitle }}</h2>
+      </div>
+      {% if entry.eventsSubtitle | length %}
+        <div class="excerpt__intro">
+          <p>{{ entry.eventsSubtitle }}</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  <div class="l-campus-events__filter">
+    <div class="form-field form-field--inline form-field--select">
+      <label class="form-field__label" for="campusSelect">Filter by campus:</label>
+      <select name="campus"  class="form-field__input" id="campusSelect">
+        <option value="">All Campuses</option>
+        {% for campus in campuses %}
+          {% if craft.calendar.events({
+            calendar: campus.handle
+          }) | length %}
+            <option value="{{ campus.handle }}">{{ campus.name }}</option>
+          {% endif %}
+        {% endfor %}
+        <option value="#notOnCampus">{{ entry.noCampusOption | default("Don't see your campus?") }}</option>
+      </select>
+    </div>
+  </div>
+  <div class="l-campus-events__body js-campus-events">
+    {% for event in events %}
+      {% include 'campus/_event' %}
+    {% endfor %}
+  </div>
+
+  <div class="l-campus-events__footer">
+    <div class="event-pagination">
+      <div class="event-pagination__prev">
+        Now
+      </div>
+      <div class="event-pagination__dots">
+        <ul class="event-dots js-campus-events__dots">
+          {% for event in events %}
+            <li {% if loop.first %}class="is-selected"{% endif %} data-campus="{{ event.calendar.handle }}">
+              <div class="event-dot">
+                <span class="event-dot__dot"></span>
+                <div class="event-dot__info">
+                  {{ event.startDate | date('M j') }} @ {{ event.calendar.name }}
+                </div>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="event-pagination__next">
+        Later
+      </div>
+    </div>
+  </div>
+</div>

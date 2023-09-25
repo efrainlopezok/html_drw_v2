@@ -1,0 +1,6 @@
+{% if craft.request.isAjax %}
+    {% extends "_ajax" %}
+    {% set closeAlert = craft.drwAlert.closeAlert() %}
+{% else %}
+    {% redirect "/" %}
+{% endif %}

@@ -1,0 +1,77 @@
+//---------------------------------------------------------------
+//
+// Masonry Grid
+// Unfortunately the susy gallery mixin doesn't play nice with
+// masonry so we have to have another object
+//
+//---------------------------------------------------------------
+
+.l-masonry-grid {
+  //width: span(8 of $grid-layout) - 1%;
+  @include container($grid-layout);
+}
+
+.l-masonry-grid__item--sizer,
+.l-masonry-grid__item {
+  width: 100%;
+
+  @include breakpoint(540px) {
+    width: span(6 of $grid-layout) - 2%;
+  }
+
+  @include breakpoint(bp(large)) {
+    width: span(4 of $grid-layout) - 1%;
+    //width: span(6 of $grid-layout) - 1%;
+  }
+}
+
+.l-masonry-grid__item {
+  margin-bottom: 25px;
+}
+
+.l-masonry-grid__item--two-thirds {
+  @include breakpoint(bp(large)) {
+    width: span(8 of $grid-layout) - 2%;
+  }
+}
+
+.l-masonry-grid--2-up {
+  .l-masonry-grid__item--sizer,
+  .l-masonry-grid__item {
+    @include breakpoint(540px) {
+      width: span( 6 of $grid-layout ) - 2%;
+    }
+  }
+}
+
+// masonry grid for blog page
+.l-section--blog {
+  .grid-wrapper {
+    @include container($grid-layout);
+    display: flex;
+    flex-flow: row wrap;
+    .l-section__cta {
+      flex-basis: 100%;
+    }
+  }
+  .l-masonry-grid {
+    width: span(12 of $grid-layout) - 1%;
+    @include breakpoint(540px) {
+      width: span(8 of $grid-layout) - 1%;
+      float: left;
+    }
+  }
+
+  .l-masonry-grid__item--sizer,
+  .l-masonry-grid__item {
+    width: 100%;
+
+    @include breakpoint(540px) {
+      width: span(12 of $grid-layout) - 1%;
+    }
+
+    @include breakpoint(bp(large)) {
+      width: span(6 of $grid-layout) - 1%;
+    }
+  }
+}

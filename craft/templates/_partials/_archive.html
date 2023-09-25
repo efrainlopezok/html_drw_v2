@@ -1,0 +1,24 @@
+<div class="l-archive">
+    <h4>Categories:</h4>
+    {% set entryIds = craft.entries.section('updates').ids() %}
+    {% set categories = craft.categories.relatedTo({ sourceElement: entryIds }).groupId(1).find() %}
+    {% set filters = craft.request.getQuery('filters') ? craft.request.getQuery('filters'): {} %}
+    {% set queryCategory = filters['category'] is defined ? filters['category'] : ' ' %}
+    <ul class="l-archive__list">
+        {% for category in categories %}
+            {% set params = { filters: { category: category.slug }} %}
+            {% set url_param = params | url_encode %}
+            <li class="l-archive__item"><a href="{{ url(craft.request.path, url_param)}}" class="{{ ( queryCategory == category.slug ) ? 'is-active' : '' }}">{{  category.title }}</a> </li>
+        {% endfor %}
+    </ul>
+    <h4>Archives:</h4>
+    {% set dates = craft.drw.createArchive() %}
+    {% set queryDate = filters['date'] is defined ? filters['date'] : ' ' %}
+    <ul class="l-archive__list">
+        {% for date in dates %}
+            {% set params = { filters: { date: date }} %}
+            {% set url_param = params | url_encode %}
+            <li class="l-archive__item"><a href="{{ url(craft.request.path, url_param)}}" class="{{ ( queryDate == date) ? 'is-active' : '' }}">{{  date }}</a> </li>
+        {% endfor %}
+    </ul>
+</div>
